@@ -18,5 +18,6 @@
     "src/**/*.vue",
     "build/**/*.ts",
     "build/**/*.d.ts",
+    "types/**/*.d.ts",
   ]
 }

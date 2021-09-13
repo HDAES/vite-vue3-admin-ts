@@ -7,6 +7,8 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "dayjs": "^1.10.7",
+    "element-plus": "^1.1.0-beta.9",
     "vue": "^3.2.6"
   },
   "devDependencies": {
@@ -15,6 +17,8 @@
     "@vue/compiler-sfc": "^3.2.6",
     "typescript": "^4.3.2",
     "vite": "^2.5.4",
+    "vite-plugin-element-plus": "0.0.12",
+    "vite-plugin-svg-icons": "^1.0.4",
     "vue-tsc": "^0.2.2"
   }
 }
