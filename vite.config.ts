@@ -1,7 +1,7 @@
 import type { UserConfig, ConfigEnv } from 'vite';
 
 import { loadEnv } from 'vite';
-import { resolve } from 'path';
+import path from 'path';
 
 import { wrapperEnv } from './build/utils'
 import { createVitePlugins } from './build/vite/plugin'
@@ -9,9 +9,9 @@ import { createVitePlugins } from './build/vite/plugin'
 import pkg from './package.json';
 import dayjs from 'dayjs';
 
-function pathResolve(dir: string) {
-  return resolve(process.cwd(), '.', dir);
-}
+const resolve = (dir: string) => path.join(__dirname, dir)
+
+
 
 const { dependencies, devDependencies, name, version } = pkg;
 const __APP_INFO__ = {
@@ -30,17 +30,9 @@ export default ({ command, mode } : ConfigEnv): UserConfig =>{
   const { VITE_PORT, VITE_PUBLIC_PATH, VITE_PROXY, VITE_DROP_CONSOLE } = viteEnv;
   return {
     resolve: {
-      alias: [
-      // /@/xxxx => src/xxxx
-      {
-        find: /\/@\//,
-        replacement: pathResolve('src') + '/',
-      },
-      // /#/xxxx => types/xxxx
-      {
-        find: /\/#\//,
-        replacement: pathResolve('types') + '/',
-      }]
+      alias: {
+        '@': resolve('src'),
+      }
     },
     server: {
       host: true,
