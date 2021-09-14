@@ -19,3 +19,7 @@ declare interface ViteEnv {
     VITE_USE_IMAGEMIN: boolean;
     VITE_GENERATE_UI: string;
   }
+
+  interface ImportMetaEnv{
+    VITE_GLOB_API_URL: string
+  }

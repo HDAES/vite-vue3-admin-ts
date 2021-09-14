@@ -7,12 +7,15 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "axios": "^0.21.4",
     "dayjs": "^1.10.7",
     "element-plus": "^1.1.0-beta.9",
+    "md5": "^2.3.0",
     "mockjs": "^1.1.0",
     "vue": "^3.2.6"
   },
   "devDependencies": {
+    "@types/md5": "^2.3.1",
     "@types/node": "^16.9.1",
     "@vitejs/plugin-vue": "^1.6.1",
     "@vue/compiler-sfc": "^3.2.6",

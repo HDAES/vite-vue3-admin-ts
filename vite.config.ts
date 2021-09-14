@@ -19,6 +19,8 @@ const __APP_INFO__ = {
   lastBuildTime: dayjs().format('YYYY-MM-DD HH:mm:ss'),
 };
 
+
+
 export default ({ command, mode } : ConfigEnv): UserConfig =>{
   const root = process.cwd();
   // 获取env文件内容
