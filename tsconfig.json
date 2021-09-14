@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "useDefineForClassFields": true,
     "module": "esnext",
+    "useDefineForClassFields": true,
+    "noImplicitAny": false,
     "moduleResolution": "node",
     "strict": true,
     "baseUrl": ".",
@@ -11,6 +12,7 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
+    "types": ["vite/client"],
     "paths": {
       "@/*": ["src/*"]
     }
@@ -23,6 +25,7 @@
     "build/**/*.ts",
     "build/**/*.d.ts",
     "types/**/*.d.ts",
+    "mock/**/*.ts",
   ],
   
 }
