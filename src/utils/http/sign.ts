@@ -12,7 +12,7 @@ export function setRequestConfig(config: AxiosRequestConfig) : AxiosRequestConfi
     const timestamp: Number = new Date().getTime()
     
     //当前api 版本
-    const version = import.meta.env.VITE_API_VERSION
+    const version: string = import.meta.env.VITE_API_VERSION
 
     config.headers['version'] = version
     config.headers['timestamp'] = timestamp
@@ -21,6 +21,7 @@ export function setRequestConfig(config: AxiosRequestConfig) : AxiosRequestConfi
 
     return config;
 }
+
 
 export function setSign(config: AxiosRequestConfig, timestamp: Number) : string{
     let str = ""

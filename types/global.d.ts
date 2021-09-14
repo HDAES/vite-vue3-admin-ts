@@ -22,4 +22,5 @@ declare interface ViteEnv {
 
   interface ImportMetaEnv{
     VITE_GLOB_API_URL: string
+    VITE_API_VERSION: string
   }
