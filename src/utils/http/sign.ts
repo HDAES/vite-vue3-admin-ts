@@ -5,19 +5,26 @@
  */
   
 import { AxiosRequestConfig } from 'axios';
+import { getToken } from '../auth'
 import Md5 from 'md5'
 
 export function setRequestConfig(config: AxiosRequestConfig) : AxiosRequestConfig{
     //获取当前时间
-    const timestamp: Number = new Date().getTime()
+    const timestamp: Number = new Date().getTime();
     
     //当前api 版本
-    const version: string = import.meta.env.VITE_API_VERSION
-
-    config.headers['version'] = version
-    config.headers['timestamp'] = timestamp
-    config.headers['sign'] = setSign(config,timestamp)
-
+    const version: string =config.version?config.version: import.meta.env.VITE_API_VERSION;
+    
+    config.headers['version'] = version;
+    config.headers['timestamp'] = timestamp;
+    config.headers['sign'] = setSign(config,timestamp);
+    
+    // 是否需要设置 token
+    if(config.isToken && getToken()){
+        config.headers['Authorization'] =  getToken()
+    }
+    // 设置请求头部
+    config.baseURL = config.isMock? import.meta.env.VITE_GLOB_API_MOCK: import.meta.env.VITE_GLOB_API_URL
 
     return config;
 }

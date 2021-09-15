@@ -1,21 +1,39 @@
 import axios, { AxiosRequestConfig, AxiosResponse, AxiosInstance } from 'axios'
-import { ElMessage } from 'element-plus'
+import { ElMessage, ElLoading, ILoadingInstance } from 'element-plus'
+import { setRequestConfig } from './sign';
+
+
+
+
+let loadingInstance: ILoadingInstance;
 
 const instance: AxiosInstance = axios.create({
-    baseURL: import.meta.env.VITE_GLOB_API_URL,
     withCredentials: true,
     timeout: 30000,
 })
 
 //请求拦截
 instance.interceptors.request.use( (config: AxiosRequestConfig) => {
-    return config
+
+    if(config.loading){
+        loadingInstance = ElLoading.service({
+            lock: true,
+            text: 'Loading',
+            spinner: 'el-icon-loading',
+            background: 'rgba(0, 0, 0, 0.7)',
+        })
+    }
+
+    return setRequestConfig(config);
 },(error) =>{
     return Promise.resolve(error)
 })
 
 //响应拦截
 instance.interceptors.response.use( (response: AxiosResponse) => {
+
+    loadingInstance?.close()
+
     const code = response.data.code;
 
     if(code == 5002 || code == 5003){

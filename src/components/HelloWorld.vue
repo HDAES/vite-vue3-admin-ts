@@ -1,7 +1,7 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import { SvgIcon } from '@/components/Icon';
-
+import { getVerifyCode,getVerifyCodes } from '@/api/system/login'
 export default defineComponent({
   components: { SvgIcon },
   props: {
@@ -12,6 +12,8 @@ export default defineComponent({
   },
   setup() {
     const count = ref(0)
+    getVerifyCode()
+    getVerifyCodes()
     return {
       ref,
       SvgIcon,

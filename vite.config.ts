@@ -5,9 +5,11 @@ import path from 'path';
 
 import { wrapperEnv } from './build/utils'
 import { createVitePlugins } from './build/vite/plugin'
+import { createProxy } from './build/vite/proxy';
 
 import pkg from './package.json';
 import dayjs from 'dayjs';
+
 
 const resolve = (dir: string) => path.join(__dirname, dir)
 
@@ -39,6 +41,8 @@ export default ({ command, mode } : ConfigEnv): UserConfig =>{
     server: {
       host: true,
       port: VITE_PORT,
+      // Load proxy configuration from .env
+      proxy: createProxy(VITE_PROXY),
     },
     define: {
       // setting vue-i18-next
