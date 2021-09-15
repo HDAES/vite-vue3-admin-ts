@@ -4,7 +4,8 @@ import request from '@/utils/http'
 export function getVerifyCode() {
     return request({
         url: '/admin/sec/user/verifyCode',
-        method: 'get'
+        method: 'get',
+        version: '1.0.0'
     })
 }
 

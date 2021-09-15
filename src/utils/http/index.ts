@@ -1,11 +1,10 @@
 import axios, { AxiosRequestConfig, AxiosResponse, AxiosInstance } from 'axios'
-import { ElMessage, ElLoading, ILoadingInstance } from 'element-plus'
+import { ElMessage, ElLoading, ILoadingInstance, IMessageHandle } from 'element-plus'
+import { addPending, removePending } from './pending';
 import { setRequestConfig } from './sign';
 
-
-
-
 let loadingInstance: ILoadingInstance;
+let MessageHandle : IMessageHandle; 
 
 const instance: AxiosInstance = axios.create({
     withCredentials: true,
@@ -14,6 +13,9 @@ const instance: AxiosInstance = axios.create({
 
 //请求拦截
 instance.interceptors.request.use( (config: AxiosRequestConfig) => {
+    removePending(config)
+    addPending(config)
+
 
     if(config.loading){
         loadingInstance = ElLoading.service({
@@ -31,14 +33,15 @@ instance.interceptors.request.use( (config: AxiosRequestConfig) => {
 
 //响应拦截
 instance.interceptors.response.use( (response: AxiosResponse) => {
-
+    removePending(response)
+    
     loadingInstance?.close()
 
     const code = response.data.code;
 
     if(code == 5002 || code == 5003){
         //身份失效 退出登录
-        ElMessage.error(response.data.message || '未知错误')
+        MessageHandle = ElMessage.error(response.data.message || '未知错误')
     }else{
         if(code == 200){
             if(response.data.data){
@@ -61,9 +64,9 @@ instance.interceptors.response.use( (response: AxiosResponse) => {
     }else if(message.includes("Request failed with status code")){
         message = "系统接口" + message.substr(message.length - 3) + "异常";
     }
-
-    ElMessage({type: 'error',message,duration: 5000})
-
+    MessageHandle?.close()
+    MessageHandle = ElMessage({type: 'error',message,duration: 5000})
+   
     return Promise.reject(error)
 })
 
