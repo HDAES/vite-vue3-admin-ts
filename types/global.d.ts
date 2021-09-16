@@ -24,4 +24,5 @@ declare interface ViteEnv {
     VITE_GLOB_API_URL: string
     VITE_API_VERSION: string
     VITE_GLOB_API_MOCK: string
+    VITE_PUBLIC_PATH: string
   }
