@@ -23,7 +23,7 @@ export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
     ];
     
     // vite-plugin-element-plus
-    vitePlugins.push(configElementPlusPlugin(isBuild))
+    //vitePlugins.push(configElementPlusPlugin(isBuild))
 
     //vite-plugin-svg-icons
     vitePlugins.push(configSvgIconsPlugin(isBuild))

@@ -1,9 +1,10 @@
 import { createApp } from 'vue'
 import 'virtual:svg-icons-register';
-
+import '@/elemntPlus/element-plus-theme/index.css'
 import { setupRouter } from '@/router'
+import { setupElementPlus } from './elemntPlus';
 
-
+import './permission'
 import App from './App.vue'
 
 async function bootstrap() {
@@ -12,7 +13,10 @@ async function bootstrap() {
     //Configure routing
     setupRouter(app)
 
+    setupElementPlus(app)
+    
     app.mount('#app');
 }
+
 
 bootstrap()
