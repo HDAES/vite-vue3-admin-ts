@@ -1,0 +1,36 @@
+.el-menu{
+    border-right: none!important;
+}
+.sidebar-el-menu:not(.el-menu--collapse) {
+    width: 200px;
+}
+
+
+.el-menu--collapse  .el-submenu__title span{
+    display: none;
+  }
+  /*隐藏 */
+.el-menu--collapse  .el-submenu__title .el-submenu__icon-arrow{
+    display: none;
+}
+
+
+.sidebar-el-menu{
+    .is-active{
+        background-color: #0960BD!important;
+    }
+    .is-opened{
+        .el-menu-item{
+            background-color: #0C2135!important;
+        }
+        .is-active{
+            background-color: #0960BD!important;
+        }
+    }
+    .el-menu-item:hover,.el-submenu__title:hover{
+        color: #fff!important;
+        i{
+            color: #bbb!important;
+        }
+    }
+}

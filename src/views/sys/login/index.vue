@@ -6,15 +6,9 @@
 </template>
 
 <script>
-import { getVerifyCode,getVerifyCodes } from '@/api/system/login'
 export default {
 
   setup() {
-    getVerifyCode()
-    getVerifyCode()
-    getVerifyCode()
-    getVerifyCode()
-    getVerifyCodes()
   }
 }
 </script>

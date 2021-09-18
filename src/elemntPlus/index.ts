@@ -1,8 +1,19 @@
 import type { App } from 'vue';
 
-import { ElButton } from 'element-plus';
+import { 
+    ElButton,
+    ElContainer,
+    ElMenu,
+    ElScrollbar
+    
+} from 'element-plus';
 
-const components = [ ElButton ]
+const components = [ 
+    ElButton,
+    ElContainer,
+    ElMenu,
+    ElScrollbar
+]
 
 export function setupElementPlus(app: App<Element>) {
     components.forEach(component => {

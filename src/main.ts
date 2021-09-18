@@ -1,6 +1,8 @@
 import { createApp } from 'vue'
 import 'virtual:svg-icons-register';
 import '@/elemntPlus/element-plus-theme/index.css'
+import '@/assets/styles/index.scss'
+
 import { setupRouter } from '@/router'
 import { setupElementPlus } from './elemntPlus';
 

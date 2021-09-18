@@ -5,7 +5,7 @@ import 'nprogress/nprogress.css'
 
 NProgress.configure({ showSpinner: false })
 
-const whiteList: string[] = [ '/login' ]
+const whiteList: string[] = [ '/login','/dashboard/analysis' ]
 
 router.beforeEach((to, from, next) =>{
 
@@ -15,7 +15,6 @@ router.beforeEach((to, from, next) =>{
     if(getToken()){
 
     }else{
-        console.log('123123')
         if (whiteList.indexOf(to.path) !== -1) {
             next()
         }else {
