@@ -8,7 +8,7 @@
       background-color="#001529"
       text-color="#ccc"
       active-text-color="#fff"
-      :collapse="false"
+      :collapse="collapse"
     >
       <el-sub-menu index="1">
         <template #title>
@@ -48,13 +48,13 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-
+import { useAppSetting } from '@/hooks/app/useAppStore'
 export default defineComponent({
   setup() {
-    const isCollapse = ref(false);
-    
+    const { collapse } = useAppSetting();
+
     return {
-      isCollapse
+      collapse
     };
   },
 });

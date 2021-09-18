@@ -4,8 +4,8 @@ import '@/elemntPlus/element-plus-theme/index.css'
 import '@/assets/styles/index.scss'
 
 import { setupRouter } from '@/router'
-import { setupElementPlus } from './elemntPlus';
-
+import { setupElementPlus } from '@/elemntPlus';
+import { setupStore } from '@/store'
 import './permission'
 import App from './App.vue'
 
@@ -17,8 +17,8 @@ async function bootstrap() {
 
     setupElementPlus(app)
     
+    setupStore(app)
+
     app.mount('#app');
 }
-
-
 bootstrap()

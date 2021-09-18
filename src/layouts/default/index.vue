@@ -3,7 +3,7 @@
         <Sidebar />
         <el-container>
             <el-header style="height: 48px">
-                123123
+               <Header />
             </el-header>
             <AppMain />
         </el-container>
@@ -14,8 +14,9 @@
 import { defineComponent } from "vue";
 import Sidebar from './components/Sidebar/index.vue'
 import AppMain from './components/AppMain/index.vue'
+import Header from './components/Header/index.vue'
 export default defineComponent({
-    components: { Sidebar, AppMain }
+    components: { Sidebar, AppMain, Header }
 })
 
 </script>
