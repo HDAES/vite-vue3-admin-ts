@@ -8,7 +8,7 @@ interface AppState {
 export const useAppStore = defineStore({
     id: 'app',
     state : (): AppState  =>({
-        collapse: true
+        collapse: false
     }),
     getters: {
         getCollapse(): Boolean{

@@ -4,7 +4,12 @@ import {
     ElButton,
     ElContainer,
     ElMenu,
-    ElScrollbar
+    ElScrollbar,
+    ElIcon,
+    ElBreadcrumb,
+    ElBadge,
+    ElDropdown,
+    ElDrawer,
     
 } from 'element-plus';
 
@@ -12,7 +17,12 @@ const components = [
     ElButton,
     ElContainer,
     ElMenu,
-    ElScrollbar
+    ElScrollbar,
+    ElIcon,
+    ElBreadcrumb,
+    ElBadge,
+    ElDropdown,
+    ElDrawer
 ]
 
 export function setupElementPlus(app: App<Element>) {

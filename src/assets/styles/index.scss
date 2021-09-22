@@ -34,3 +34,21 @@
         }
     }
 }
+
+.h-icon{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    cursor: pointer;
+    padding: 0 10px;
+}
+.h-icon:hover{
+    background-color: #f6f6f6;
+}
+
+.el-header{
+    padding: 0;
+}
+.h-dropdown{
+    height: 100%;
+}

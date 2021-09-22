@@ -9,7 +9,7 @@ export function useAppSetting() {
 
 
     const collapse: ComputedRef<Boolean> = computed((): Boolean => appStore.getCollapse)
-    const changeCollapse: void = appStore.changeCollapse()
+    const changeCollapse: Function = appStore.changeCollapse
     
 
     return {
