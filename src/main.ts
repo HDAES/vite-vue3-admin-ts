@@ -1,5 +1,10 @@
 import { createApp } from 'vue'
 import 'virtual:svg-icons-register';
+
+import 'virtual:windi-base.css'
+import 'virtual:windi-components.css'
+import 'virtual:windi-utilities.css'
+
 import '@/elemntPlus/element-plus-theme/index.css'
 import '@/assets/styles/index.scss'
 

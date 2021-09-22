@@ -1,6 +1,7 @@
   
 import type { Plugin } from 'vite';
 import vue from '@vitejs/plugin-vue';
+import windiCSS from 'vite-plugin-windicss';
 
 import { configElementPlusPlugin } from './elementPlus'
 import { configSvgIconsPlugin } from './svgSprite'
@@ -22,6 +23,10 @@ export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
         vue()
     ];
     
+    // vite-plugin-windicss
+    vitePlugins.push(windiCSS());
+
+
     // vite-plugin-element-plus
     //vitePlugins.push(configElementPlusPlugin(isBuild))
 
