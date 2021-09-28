@@ -1,7 +1,7 @@
 <template>
     <div class="hades-header">
         <div class="collapse-breadcrumb">
-            <el-icon class="h-icon" :size="18" color="#333">
+            <el-icon class="h-icon " :size="18" color="#333">
                 <MenuUnfoldOutlined v-if="collapse" @click="changeCollapse"/> 
                 <MenuFoldOutlined v-else @click="changeCollapse"/>
             </el-icon>
