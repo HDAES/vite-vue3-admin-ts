@@ -67,8 +67,10 @@ export default defineComponent({
         height: 100%;
         padding-right: 20px;
         .badge{
-          height: 30px;
-          line-height: 30px;
+            position: relative;
+          height: 18px;
+          line-height: 18px;
+          top: -4px;
         }
     }
 }
