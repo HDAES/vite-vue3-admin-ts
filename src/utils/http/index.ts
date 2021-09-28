@@ -45,7 +45,7 @@ instance.interceptors.response.use( (response: AxiosResponse) => {
     }else{
         if(code == 200){
             if(response.data.data){
-                return response.data.data
+                return response.data
             }else{
                 ElMessage.success(response.data.message || '操作成功')
                 return response.data

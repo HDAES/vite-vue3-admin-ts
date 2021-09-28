@@ -9,10 +9,11 @@ export function getVerifyCode() {
     })
 }
 
-export function getVerifyCodes() {
+//管理员登录: https://yapi.xujiaji.com/project/27/interface/api/119
+export function putUserLogin(data) {
     return request({
-        url: '/getUserInfo',
-        method: 'get',
-        isMock: true
+        url: '/admin/sec/user/login',
+        method: 'put',
+        data
     })
 }

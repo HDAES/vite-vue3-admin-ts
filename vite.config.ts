@@ -44,6 +44,13 @@ export default ({ command, mode } : ConfigEnv): UserConfig =>{
       // Load proxy configuration from .env
       proxy: createProxy(VITE_PROXY),
     },
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@import "@/assets/styles/breakpoint.scss";`
+        }
+      }
+    },
     define: {
       // setting vue-i18-next
       // Suppress warning

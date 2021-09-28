@@ -13,7 +13,12 @@ router.beforeEach((to, from, next) =>{
     NProgress.start()
     
     if(getToken()){
-
+        if (to.path === '/login' || to.path === '/') {
+            console.log('1312')
+            next({ path: '/dashboard/analysis' })
+        }else{
+            next()
+        }
     }else{
         if (whiteList.indexOf(to.path) !== -1) {
             next()

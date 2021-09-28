@@ -1,3 +1,6 @@
+
+
+
 .el-menu{
     border-right: none!important;
 }
@@ -51,4 +54,22 @@
 }
 .h-dropdown{
     height: 100%;
+}
+
+.code-item{
+    .el-form-item__content{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center; 
+    }
+}
+
+.form-item-sb{
+    .el-form-item__content{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
 }

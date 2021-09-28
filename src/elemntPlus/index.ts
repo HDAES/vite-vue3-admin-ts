@@ -10,6 +10,10 @@ import {
     ElBadge,
     ElDropdown,
     ElDrawer,
+    ElForm,
+    ElInput,
+    ElCheckbox,
+    ElLink,
     
 } from 'element-plus';
 
@@ -22,7 +26,11 @@ const components = [
     ElBreadcrumb,
     ElBadge,
     ElDropdown,
-    ElDrawer
+    ElDrawer,
+    ElForm,
+    ElInput,
+    ElCheckbox,
+    ElLink
 ]
 
 export function setupElementPlus(app: App<Element>) {

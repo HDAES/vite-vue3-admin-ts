@@ -1,5 +1,4 @@
 import { defineStore } from 'pinia';
-import { store } from '@/store'
 
 interface AppState {
     collapse: Boolean
