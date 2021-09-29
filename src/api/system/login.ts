@@ -17,3 +17,11 @@ export function putUserLogin(data) {
         data
     })
 }
+
+//管理员信息: https://yapi.xujiaji.com/project/27/interface/api/125
+export function getUserInfo() {
+    return request({
+        url: '/admin/sec/user/info',
+        method: 'get'
+    })
+}

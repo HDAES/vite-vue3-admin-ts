@@ -14,12 +14,13 @@ import { setupStore } from '@/store'
 import './permission'
 import App from './App.vue'
 
+
 async function bootstrap() {
     const app = createApp(App)
 
     //Configure routing
     setupRouter(app)
-
+    
     setupElementPlus(app)
     
     setupStore(app)

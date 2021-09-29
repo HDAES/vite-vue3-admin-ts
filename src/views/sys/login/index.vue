@@ -40,7 +40,9 @@
             xl:w-auto
             enter-x
             ">
-              <h2 class="mb-3 text-2xl font-bold text-center xl:text-3xl enter-x xl:text-left">登录</h2>
+              <h2 class="mb-3 text-2xl font-bold text-center xl:text-3xl enter-x xl:text-left">
+                登录
+              </h2>
 
               <el-form class="enter-x" :model="form" ref="ruleForm" :rules="rules" >
                 <el-form-item class="enter-x" prop="username">

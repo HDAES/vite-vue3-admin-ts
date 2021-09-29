@@ -20,9 +20,11 @@ export function setRequestConfig(config: AxiosRequestConfig) : AxiosRequestConfi
     config.headers['sign'] = setSign(config,timestamp);
     
     // 是否需要设置 token
-    if(config.isToken && getToken()){
-        config.headers['Authorization'] =  getToken()
+    const isToken = (config.headers || {}).isToken == false
+    if(!isToken && getToken()){
+        config.headers['Authorization'] =  getToken() 
     }
+   
     // 设置请求头部
     config.baseURL = config.isMock? import.meta.env.VITE_GLOB_API_MOCK: import.meta.env.VITE_GLOB_API_URL
 

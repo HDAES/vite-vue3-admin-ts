@@ -1,4 +1,4 @@
-import { putUserLogin } from '@/api/system/login'
+import { getUserInfo, putUserLogin } from '@/api/system/login'
 import { setToken as setAuthToken, getToken } from '@/utils/auth'
 import md5 from 'md5'
 import { defineStore } from 'pinia'
@@ -6,7 +6,7 @@ import { defineStore } from 'pinia'
 
 interface UserState{
     token: string,
-    roles: Array<any>,
+    roles: string[],
     permissions: Array<any>,
     username: string
 }
@@ -28,13 +28,16 @@ export const useUserStore = defineStore({
         getUserName(): string{
           return this.username
         },
-        getRoles():  Array<any>{
+        getRoles(): string[]{
           return this.roles
         }
     },
     actions: {
         setToken(token: string): void {
             this.token = token
+        },
+        setRoles(roles: []): void {
+            this.roles = roles
         },
         async login(data: any){
             return new Promise<void>((resolve, reject) =>{
@@ -45,7 +48,16 @@ export const useUserStore = defineStore({
                 }).catch(error => {
                     reject(error)
                 })
+            })
+        },
+        getInfo(){
+            return new Promise((resolve, reject) => {
+              getUserInfo().then(res =>{
+                this.username = res.data.username
+                this.setRoles(res.data.roles)
+                resolve(true)
               })
-        }
+            })
+        },
     }
 })

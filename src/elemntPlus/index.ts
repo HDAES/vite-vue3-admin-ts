@@ -14,6 +14,11 @@ import {
     ElInput,
     ElCheckbox,
     ElLink,
+    ElRow,
+    ElCol,
+    ElCard,
+    ElSpace,
+    ElTabs,
     
 } from 'element-plus';
 
@@ -30,7 +35,12 @@ const components = [
     ElForm,
     ElInput,
     ElCheckbox,
-    ElLink
+    ElLink,
+    ElRow,
+    ElCol,
+    ElCard,
+    ElSpace,
+    ElTabs
 ]
 
 export function setupElementPlus(app: App<Element>) {

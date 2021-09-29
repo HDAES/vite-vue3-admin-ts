@@ -1,5 +1,37 @@
+@import './transition.scss';
 
+.h-icon{
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    cursor: pointer;
+    padding: 0 10px;
+    width: 2em;
+}
+.h-icon:hover{
+    background-color: #f6f6f6;
+}   
 
+.el-header{
+    padding: 0;
+}
+.form-item-sb{
+    .el-form-item__content{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+.code-item{
+    .el-form-item__content{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center; 
+    }
+}
 
 .el-menu{
     border-right: none!important;
@@ -16,6 +48,35 @@
 .el-menu--collapse  .el-submenu__title .el-submenu__icon-arrow{
     display: none;
 }
+
+  /*表格表头 背景颜色*/
+.hades-table-header th{
+    background: #F5F7FA!important;
+}
+.el-table__header{
+    width: 100%;
+}
+
+.table-setting{
+    display: flex;
+    flex-direction: column;
+    .setting-item{
+      display: flex;
+      flex-direction: row;
+      margin-top: 15px;
+      .label{
+          width: 80px;
+      }
+    }
+}
+  /*下拉 树状选择 取消padding*/
+.select-tree{
+    .el-select-dropdown__item{
+        padding: 0;
+    }
+}
+
+
 
 
 .sidebar-el-menu{
@@ -36,42 +97,27 @@
             color: #bbb!important;
         }
     }
+   
 }
-
-.h-icon{
-    position: relative;
+.card-header{
     display: flex;
+    min-height: 36px;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    height: 100%;
-    cursor: pointer;
-    padding: 0 10px;
-    width: 2em;
 }
-.h-icon:hover{
-    background-color: #f6f6f6;
-}
-
-.el-header{
-    padding: 0;
-}
-.h-dropdown{
-    height: 100%;
-}
-
-.code-item{
-    .el-form-item__content{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center; 
+// 全局card 样式
+.hades-card {
+    .el-card__header{
+        min-height: 36px;
+        padding: 0 12px;
+        .card-header{
+            .title{
+                font-size: 14px;
+            }
+        }
     }
 }
-
-.form-item-sb{
-    .el-form-item__content{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
+.el-card.is-always-shadow {
+    box-shadow: none;
 }
