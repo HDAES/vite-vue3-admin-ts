@@ -13,7 +13,7 @@
         :havecChildren="havecChildren"
         />
     </el-sub-menu>
-    <el-menu-item :index="(havecChildren?path:'') + '/' +route.path" v-else>
+    <el-menu-item :index="(havecChildren?path:'') + '/' +route.path" :key-data="(havecChildren?path:'') + '/' +route.path" v-else>
       <i :class="route.meta.icon"></i>
       <template #title>
         {{ route.meta.title }}

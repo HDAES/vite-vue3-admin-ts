@@ -76,5 +76,6 @@ function filterAsyncRouter(asyncRouterMap: Array<any>, lastRouter = false, type 
 
   
 export const loadView = (view: any) => { // 路由懒加载
+  console.log(view)
   return modules[`../../views/${view}/index.vue`]
 }
