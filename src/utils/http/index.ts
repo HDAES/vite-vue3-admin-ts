@@ -1,5 +1,6 @@
 import axios, { AxiosRequestConfig, AxiosResponse, AxiosInstance } from 'axios'
 import { ElMessage, ElLoading, ILoadingInstance, IMessageHandle } from 'element-plus'
+import { ResponseList } from 'types/axios';
 import { addPending, removePending } from './pending';
 import { setRequestConfig } from './sign';
 
@@ -32,9 +33,8 @@ instance.interceptors.request.use( (config: AxiosRequestConfig) => {
 })
 
 //响应拦截
-instance.interceptors.response.use( (response: AxiosResponse) => {
+instance.interceptors.response.use( (response: AxiosResponse<ResponseList>) =>{
     removePending(response)
-    
     loadingInstance?.close()
 
     const code = response.data.code;
@@ -45,6 +45,9 @@ instance.interceptors.response.use( (response: AxiosResponse) => {
     }else{
         if(code == 200){
             if(response.data.data){
+                if(response.data.data.list){
+                    return response.data.data
+                }
                 return response.data
             }else{
                 ElMessage.success(response.data.message || '操作成功')

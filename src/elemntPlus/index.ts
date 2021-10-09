@@ -19,6 +19,14 @@ import {
     ElCard,
     ElSpace,
     ElTabs,
+    ElTooltip,
+    ElPopover,
+    ElRadio,
+    ElSwitch,
+    ElTable,
+    ElPagination,
+    ElDialog,
+    ElLoading
     
 } from 'element-plus';
 
@@ -40,7 +48,17 @@ const components = [
     ElCol,
     ElCard,
     ElSpace,
-    ElTabs
+    ElTabs,
+    ElTooltip,
+    ElPopover,
+    ElRadio,
+    ElSwitch,
+    ElTable,
+    ElPagination,
+    ElDialog,
+    ElForm,
+    ElCheckbox,
+    ElLoading
 ]
 
 export function setupElementPlus(app: App<Element>) {

@@ -20,3 +20,25 @@ declare module 'axios' {
         isMock?: Boolean
     }
 }
+
+
+
+export interface ResponseList {
+    code: Number,
+    data: {
+        list: any[],
+        page: Number,
+        pages: Number,
+        size: Number,
+        total: Number
+    },
+    message: string
+    
+}
+export interface List{
+    list: any[],
+    page: Number,
+    pages: Number,
+    size: Number,
+    total: Number
+}
