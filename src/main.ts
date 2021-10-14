@@ -11,6 +11,7 @@ import '@/assets/styles/index.scss'
 import { setupRouter } from '@/router'
 import { setupElementPlus } from '@/elemntPlus';
 import { setupStore } from '@/store'
+import { SvgIcon } from '@/components/Icon/index'
 import './permission'
 import App from './App.vue'
 
@@ -25,6 +26,6 @@ async function bootstrap() {
     
     setupStore(app)
 
-    app.mount('#app');
+    app.component('SvgIcon',SvgIcon).mount('#app');
 }
 bootstrap()

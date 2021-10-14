@@ -76,20 +76,44 @@
   </div>
 </template>
 
-<script>
-import { BasicTable } from '@/components/BasicTable'
+<script lang="ts">
+import { BasicTable, TableActionType } from '@/components/BasicTable'
 import { getUserList, postUserAdd, deleteUser, putUser,putUserStatus } from '@/api/system/user'
 import { getAllRoleList } from '@/api/system/role'
 import { ref, reactive, onMounted } from 'vue'
 import { ElMessageBox } from 'element-plus';
 import { ElMessage } from 'element-plus';
 import Md5 from 'md5'
+import { TableColumns, UpDataType } from '@/components/BasicTable/table.type';
+
+interface RoleOptions {
+  id: string
+  name: string
+}
+
+interface List {
+  id: string,
+  username: string,
+  nickname: string,
+  roles: {
+    id: string,
+  }[]
+}
+
+interface FormData {
+  id?: string,
+  username: string,
+  nickname: string,
+  roleIds: string[],
+  password?: string
+}
+
 export default {
   components: { BasicTable },
   setup(){
-    const table = ref(null)
-    const roleOptions = ref([])
-    const formData = ref({
+    const table = ref<Nullable<TableActionType>>(null)
+    const roleOptions = ref<RoleOptions[]>([])
+    const formData = ref<FormData>({
       username: '',
       nickname: '',
       roleIds: [],
@@ -101,15 +125,15 @@ export default {
     })
     onMounted(() =>{
       getAllRoleList().then(res =>{
-        roleOptions.value = res
+        roleOptions.value = res.data
       })
     })
     //新增或者编辑
-    const handleEditAdd = (type, row) =>{
+    const handleEditAdd = (type: UpDataType, row: List) =>{
       dialog.visible = true
       dialog.type = type
       if(type == 'edit'){
-        let roleIds = []
+        let roleIds: string[] = []
         row.roles.forEach(item =>roleIds.push(item.id))
         formData.value = {
           id: row.id,
@@ -124,15 +148,15 @@ export default {
     const handleSubmit = () =>{
       if(dialog.type == 'add'){
         postUserAdd({
-          ...formData.value,password: Md5(formData.value.password)
+          ...formData.value,password: Md5(formData.value.password || '')
         }).then(res =>{
           dialog.visible = false
-          table.value.handleRefresh()
+          table.value?.handleRefresh()
         })
       }else{
         putUser(formData.value).then( res =>{
           dialog.visible = false
-          table.value.handleRefresh()
+          table.value?.handleRefresh()
         })
       }
     }
@@ -166,6 +190,8 @@ export default {
         password: ''
       }
     }
+
+
     return {
       table,
       dialog,
@@ -178,7 +204,7 @@ export default {
       handleSubmit,
       handleChangePassWord,
       switchChange,
-      columns: [{
+      columns: <TableColumns[]>[{
         title: '角色名',
         dataIndex: 'username',
       },{
@@ -199,6 +225,7 @@ export default {
       },
       {
         title: '状态',
+        dataIndex: 'status',
         slotname: 'status'
       },
       {
@@ -216,7 +243,7 @@ export default {
       }],
       tableConfig: {
         name: '管理员管理'
-      }
+      } 
     }
   }
 }

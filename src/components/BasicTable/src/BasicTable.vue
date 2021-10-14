@@ -4,7 +4,7 @@
       <el-space wrap>
         <el-button icon="el-icon-plus" :disabled="(typeof editAdd) == 'undefined'" @click="editAdd('add')">新增</el-button>
         <el-button icon="el-icon-edit" :disabled="selectList.length != 1">修改</el-button>
-        <el-button icon="el-icon-delete" :disabled="selectList.length == 0" @click="handleDelBtn('multiple')">删除</el-button>
+        <el-button icon="el-icon-delete" :disabled="selectList.length == 0" @click="handleDelBtn('multiple',[])">删除</el-button>
         <el-button icon="el-icon-download" @click="dialogExeclVisible = true" :loading="exportLoading">导出</el-button>
       </el-space>
       <el-button-group>
@@ -153,8 +153,8 @@ export default {
   components: { ColumnSetting, draggable },
   props:{
     columns: {
-      type: [] as PropType<TableColumns[]>,
-      default: () => []
+      type: Array as PropType<TableColumns[]>,
+      default: (): TableColumns[] => []
     },
     getData: {
       type: Function,

@@ -17,7 +17,7 @@
 
         <div class="single">
           <CountTo :startVal='0' :endVal='1000' :duration='500' prefix="$" style="font-size: 22px"/>
-          <svg-icon icon-name="visit-count" class-name="amount-svg"/>
+          <svg-icon name="visit-count" size="40"/>
         </div>
         <div class="all">
           <div>总访问数</div>
@@ -35,7 +35,7 @@
         </template>
         <div class="single">
           <CountTo :startVal='0' :endVal='1000' :duration='500' prefix="$" style="font-size: 22px"/>
-          <svg-icon icon-name="total-sales" class-name="amount-svg"/>
+          <svg-icon name="total-sales" size="40"/>
         </div>
         <div class="all">
           <div>总成交额</div>
@@ -53,7 +53,7 @@
         </template>
         <div class="single">
           <CountTo :startVal='0' :endVal='1000' :duration='500' prefix="$" style="font-size: 22px"/>
-          <svg-icon icon-name="download-count" class-name="amount-svg"/>
+          <svg-icon name="download-count" size="40"/>
         </div>
         <div class="all">
           <div>总下载数</div>
@@ -71,7 +71,7 @@
         </template>
         <div class="single">
           <CountTo :startVal='0' :endVal='1000' :duration='500' prefix="$" style="font-size: 22px"/>
-          <svg-icon icon-name="transaction" class-name="amount-svg"/>
+          <svg-icon name="transaction" size="40"/>
         </div>
         <div class="all">
           <div>总成交数</div>
@@ -82,7 +82,7 @@
   </el-row>
 </template>
 
-<script>
+<script lang="ts">
 import { CountTo } from 'vue3-count-to';
 export default {
   components: { CountTo }

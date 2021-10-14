@@ -4,14 +4,17 @@ export type Alignment = 'left' | 'center' | 'right'
 
 export type DeleletType = 'single' | 'multiple'
 
+export type UpDataType = 'add' | 'edit'
+
 export type TableConfig = {
     name: string,
-    stripe: Boolean,
-    border: Boolean,
-    size: Size,
-    showHeader: Boolean,
-    index: Boolean,
-    selection: Boolean
+    indexName?: string,
+    stripe?: Boolean,
+    border?: Boolean,
+    size?: Size,
+    showHeader?: Boolean,
+    index?: Boolean,
+    selection?: Boolean
 }
 
 export type TableColumns = {
@@ -20,11 +23,20 @@ export type TableColumns = {
     formatter?: Function,
     align?: Alignment,
     slotname?: string,
-    show?: boolean
+    show?: boolean,
+    width?: number,
+    sortable?: boolean
 }
 
 export type ExportConfig = {
     name?: string,
     exprotNum: Number,
+}
+
+
+
+export interface TableActionType {
+    handleRefresh: () => void;
+
 }
 

@@ -2,7 +2,7 @@
     <el-scrollbar style="background-color: #001529">
     <el-menu
       class="sidebar-el-menu"
-      :collapse="isCollapse"
+      :collapse="collapse"
       background-color="#001529"
       text-color="#ccc"
       active-text-color="#fff"
