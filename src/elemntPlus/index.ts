@@ -28,7 +28,8 @@ import {
     ElDialog,
     ElLoading,
     ElSelect,
-    ElOption
+    ElOption,
+    ElTree
     
 } from 'element-plus';
 
@@ -62,7 +63,7 @@ const components = [
     ElCheckbox,
     ElLoading,
     ElSelect,
-    ElSelect
+    ElTree
 ]
 
 export function setupElementPlus(app: App<Element>) {
