@@ -1,16 +1,19 @@
 /*
- * @Descripttion: 
+ * @Descripttion: 水印
  * @Author: Hades
  * @Date: 2021-10-19 14:05:12
  */
 
 export interface WaterMark {
-    set?: Function
-    out?: Function
+    set: Function
+    out: Function
 }
 
 
-let watermark: WaterMark = {}
+let watermark: WaterMark = {
+  set: () =>{},
+  out: () =>{}
+}
 
 let setWatermark = (str: string) => {
   let id = '1.23452384164.123412415'
