@@ -29,6 +29,7 @@
 import { defineComponent, ref } from 'vue'
 import { BasicTable, TableActionType, TableColumns } from '@/components/BasicTable'
 import { getOnline, deleteKickout } from '@/api/system/sys'
+import { putUserStatus } from '@/api/system/user'
 import { ElMessageBox } from 'element-plus'
 import { ElMessage } from 'element-plus';
 export default defineComponent({
@@ -36,9 +37,13 @@ export default defineComponent({
     setup() {
 
         const tableRef = ref<Nullable<TableActionType>>(null)
-        const switchChange = (row) => { }
+        const switchChange = (row : any) => {
+            if(row.id!=null){
+                putUserStatus({secUserId:row.id,status: row.status})
+            }
+         }
         //提出
-        const handleKickOut = (row) => {
+        const handleKickOut = (row : any) => {
             ElMessageBox.confirm(`是否踢出 ${row.username}?`, '提示', {
                 confirmButtonText: '确定',
                 cancelButtonText: '取消',
