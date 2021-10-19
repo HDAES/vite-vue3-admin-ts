@@ -67,7 +67,7 @@
 </template>
 <script lang="ts">
 import { defineComponent, ref, reactive, onMounted } from "vue";
-import { BasicTable, TableActionType, TableColumns, UpDataType } from "@/components/BasicTable";
+import { BasicTable, TableActionType, TableColumns, UpDateType } from "@/components/BasicTable";
 import { getRoleList, putPermission, postRoleAdd, putRole, deleteRole } from "@/api/system/role";
 import { getPermissionTree } from '@/api/system/menu'
 import { ElTree, ElForm } from 'element-plus'
@@ -82,7 +82,7 @@ type RuleForm = {
 }
 type Dialog = {
   visible: boolean
-  type: UpDataType
+  type: UpDateType
 }
 
 export default defineComponent({
@@ -119,7 +119,7 @@ export default defineComponent({
     }
 
     //添加或者编辑按钮点击
-    const handleEditAdd = (type: UpDataType, row: any) =>{
+    const handleEditAdd = (type: UpDateType, row: any) =>{
       dialog.visible = true
       dialog.type = type
       if(type == 'edit'){
@@ -159,9 +159,6 @@ export default defineComponent({
       }
     }
 
-    const deleteRole = () =>{
-
-    }
     //单列点击事件
     const handleCellClick = (e) => {
       cellId.value = e.id

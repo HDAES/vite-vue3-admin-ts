@@ -29,7 +29,8 @@ import {
     ElLoading,
     ElSelect,
     ElOption,
-    ElTree
+    ElTree,
+    ElInputNumber
     
 } from 'element-plus';
 
@@ -63,7 +64,8 @@ const components = [
     ElCheckbox,
     ElLoading,
     ElSelect,
-    ElTree
+    ElTree,
+    ElInputNumber
 ]
 
 export function setupElementPlus(app: App<Element>) {

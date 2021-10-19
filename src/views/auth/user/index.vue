@@ -84,7 +84,7 @@ import { ref, reactive, onMounted } from 'vue'
 import { ElMessageBox } from 'element-plus';
 import { ElMessage } from 'element-plus';
 import Md5 from 'md5'
-import { TableColumns, UpDataType } from '@/components/BasicTable/table.type';
+import { TableColumns, UpDateType } from '@/components/BasicTable/table.type';
 
 interface RoleOptions {
   id: string
@@ -129,7 +129,7 @@ export default {
       })
     })
     //新增或者编辑
-    const handleEditAdd = (type: UpDataType, row: List) =>{
+    const handleEditAdd = (type: UpDateType, row: List) =>{
       dialog.visible = true
       dialog.type = type
       if(type == 'edit'){

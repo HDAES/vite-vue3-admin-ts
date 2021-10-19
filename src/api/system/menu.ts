@@ -15,3 +15,30 @@ export function getPermissionTree(params) {
         params
     })
 }
+
+//删除权限
+export function deletePermission(params) {
+    return request({
+        url: '/admin/sec/permission/del',
+        method: 'DELETE',
+        params
+    })
+}
+
+//添加权限
+export function postPermissionAdd(data) {
+    return request({
+        url: '/admin/sec/permission/add',
+        method: 'post',
+        data
+    })
+}
+
+//编辑权限
+export function putPermissionEdit(data) {
+    return request({
+        url: '/admin/sec/permission/edit',
+        method: 'put',
+        data
+    })
+}

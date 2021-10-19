@@ -4,7 +4,7 @@ export type Alignment = 'left' | 'center' | 'right'
 
 export type DeleletType = 'single' | 'multiple'
 
-export type UpDataType = 'add' | 'edit'
+export type UpDateType = 'add' | 'edit'
 
 export type TableConfig = {
     name: string,

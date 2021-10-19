@@ -68,7 +68,7 @@
               <el-table-column v-if="tableConfig.index&&pagination.total>0"  type="index" width="100" align="center" :index="1" :label="tableConfig.indexName || '序号'"></el-table-column>
               <template v-for="(item,index) in columns" :key="index">
                 <el-table-column
-                  v-if="item.show"
+                  v-if="item.show != false"
                   :label="item.title"
                   :prop="item.dataIndex"
                   :sortable="item.sortable || false" 
@@ -79,9 +79,9 @@
                     <template v-if="!item.formatter" #default="scope">
                       <template v-if="item.slotname">
                         <template v-if="item.slotname == 'operate'">
-                          <el-button v-if="!customOperate" type="text" @click="editAdd('edit',scope.row)">编辑</el-button>
+                          <el-button v-if="!customOperate" type="text" @click.stop="editAdd('edit',scope.row)">编辑</el-button>
                           <slot :name="item.slotname" :row="scope.row" />
-                          <el-button v-if="!customOperate" type="text" style="color:#f00" @click="handleDelBtn('single',scope.row)">删除</el-button>
+                          <el-button v-if="!customOperate" type="text" style="color:#f00" @click.stop="handleDelBtn('single',scope.row)">删除</el-button>
                         </template>
                         <slot v-else :name="item.slotname" :row="scope.row" />
                       </template>
@@ -230,27 +230,26 @@ export default {
     watchEffect(() =>{
       loading.value = true
       refresh.value 
-      
+
       props.getData({
           page: pagination.currentPage,
           size: pagination.pageSize,
           ...tempFormData
       }).then(res =>{
-        
-        if(res instanceof Array){
-          tableData.value = res
+        if(res.data instanceof Array){
+          tableData.value = res.data
         }else{
           pagination.total = res.total
           pagination.currentPage = res.page
           pagination.pageSize = res.size
           tableData.value = res.list
         }
-          loading.value = false
+        loading.value = false
       })
     })
     onMounted(() =>{
       let tempColumns: TableColumns[] = []
-      let colunmsFun = {}
+   
       columns.value.forEach(item =>{
         item.show = true
         tempColumns.push(item)
