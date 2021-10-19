@@ -27,7 +27,7 @@
   </el-popover>
 </template>
 
-<script>
+<script lang="ts">
 import { ref } from 'vue'
 import list from './list'
 export default {
