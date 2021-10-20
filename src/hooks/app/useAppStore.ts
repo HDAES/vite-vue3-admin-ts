@@ -9,7 +9,7 @@ export function useAppSetting() {
     const PermissionStore = usePermissionStore()
 
     const collapse: ComputedRef<Boolean> = computed((): Boolean => appStore.getCollapse)
-    const changeCollapse = () => appStore.changeCollapse
+    const changeCollapse = () => appStore.changeCollapse()
     
     const sidebarRouters: ComputedRef<any[]> = computed((): any[] => PermissionStore.getSidebarRouters)
     return {

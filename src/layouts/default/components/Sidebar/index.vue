@@ -30,7 +30,6 @@ export default defineComponent({
   setup() {
     const { collapse, sidebarRouters } = useAppSetting();
     const defaultActive = ref<string>(useRoute().fullPath)
-
     return {
       collapse,
       defaultActive,

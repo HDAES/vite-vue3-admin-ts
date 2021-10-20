@@ -16,6 +16,7 @@ export const useAppStore = defineStore({
     },
     actions: {
         changeCollapse(): void{
+            console.log('12312')
             this.collapse = ! this.collapse
         }
     }

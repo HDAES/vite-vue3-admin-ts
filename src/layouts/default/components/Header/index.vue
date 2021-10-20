@@ -6,8 +6,8 @@
                 <MenuFoldOutlined v-else @click="changeCollapse"/>
             </el-icon>
             <el-breadcrumb separator="/">
-                <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-                <el-breadcrumb-item><a href="/">活动管理</a></el-breadcrumb-item>
+                <el-breadcrumb-item >{{matched[0].name}}</el-breadcrumb-item>
+                <el-breadcrumb-item >{{matched[1].name}}</el-breadcrumb-item>
             </el-breadcrumb>
         </div>
 
@@ -29,7 +29,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
+import { onBeforeRouteUpdate, useRoute } from 'vue-router'
 import { useAppSetting } from '@/hooks/app/useAppStore'
 import FullScreen from '@/components/FullScreen/index.vue'
 import SelectLang from '@/components/SelectLang/index.vue'
@@ -41,7 +42,14 @@ export default defineComponent({
     components: { MenuUnfoldOutlined, MenuFoldOutlined, SearchOutlined, BellOutlined, FullScreen, SelectLang, Me, Setting },
     setup(){
         const { collapse, changeCollapse } = useAppSetting()
+        const matched = ref<any[]>(useRoute().matched)
+        
+        onBeforeRouteUpdate(to => {
+            matched.value = to.matched
+        })
+    
         return {
+            matched,
             collapse,
             changeCollapse
         }
