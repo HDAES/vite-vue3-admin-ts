@@ -25,3 +25,12 @@ export function getUserInfo() {
         method: 'get'
     })
 }
+
+
+//登出
+export function postLoginOut() {
+    return request({
+      url: '/admin/sec/user/logout',
+      method: 'post'
+    })
+}

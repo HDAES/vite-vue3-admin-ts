@@ -1,5 +1,5 @@
-import { getUserInfo, putUserLogin } from '@/api/system/login'
-import { setToken as setAuthToken, getToken } from '@/utils/auth'
+import { getUserInfo, putUserLogin, postLoginOut } from '@/api/system/login'
+import { setToken as setAuthToken, getToken, removeToken } from '@/utils/auth'
 import md5 from 'md5'
 import { defineStore } from 'pinia'
 
@@ -50,6 +50,7 @@ export const useUserStore = defineStore({
                 })
             })
         },
+
         getInfo(){
             return new Promise((resolve, reject) => {
               getUserInfo().then(res =>{
@@ -59,5 +60,17 @@ export const useUserStore = defineStore({
               })
             })
         },
+
+        async loginOut(){
+            return new Promise((resolve, reject) => {
+              postLoginOut().then(res =>{
+                removeToken()
+                this.setToken('')
+                resolve(true)
+              }).catch(error => {
+                reject(error)
+              })
+            })
+        }
     }
 })

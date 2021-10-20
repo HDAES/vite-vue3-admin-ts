@@ -6,6 +6,7 @@
       background-color="#001529"
       text-color="#ccc"
       active-text-color="#fff"
+      :default-active="defaultActive"
       :router="true"
     >
       <MenuItem
@@ -21,14 +22,18 @@
 
 <script lang="ts">
 import MenuItem from "./MenuItem.vue";
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
+import { useRoute } from 'vue-router'
 import { useAppSetting } from '@/hooks/app/useAppStore'
 export default defineComponent({
   components: { MenuItem },
   setup() {
     const { collapse, sidebarRouters } = useAppSetting();
+    const defaultActive = ref<string>(useRoute().fullPath)
+
     return {
       collapse,
+      defaultActive,
       sidebarRouters
     };
   },

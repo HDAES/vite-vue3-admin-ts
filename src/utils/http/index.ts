@@ -1,3 +1,4 @@
+import { useUserStore } from '@/store/modules/user';
 import axios, { AxiosRequestConfig, AxiosResponse, AxiosInstance } from 'axios'
 import { ElMessage, ElLoading, ILoadingInstance, IMessageHandle } from 'element-plus'
 import { ResponseList } from 'types/axios';
@@ -42,6 +43,10 @@ instance.interceptors.response.use( (response: AxiosResponse<ResponseList>) =>{
     if(code == 5002 || code == 5003){
         //身份失效 退出登录
         MessageHandle = ElMessage.error(response.data.message || '未知错误')
+
+        useUserStore().loginOut().then(res =>{
+            location.href = '/login';
+        })
     }else{
         if(code == 200){
             if(response.data.data){
