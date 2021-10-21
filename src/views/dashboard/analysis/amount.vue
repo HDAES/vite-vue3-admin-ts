@@ -70,12 +70,12 @@
           </div>
         </template>
         <div class="single">
-          <CountTo :startVal='0' :endVal='1000' :duration='500' prefix="$" style="font-size: 22px"/>
+          <CountTo :startVal='0' :endVal='1000' :duration='500' prefix="$"  style="font-size: 22px"/>
           <svg-icon name="transaction" size="40"/>
         </div>
         <div class="all">
           <div>总成交数</div>
-          <CountTo :startVal='0' :endVal='1000' :duration='500' prefix="$"/>
+          <CountTo :startVal='0' :endVal='1000' :duration='500' prefix="$" />
         </div>
       </el-card>
     </el-col>
@@ -84,9 +84,10 @@
 
 <script lang="ts">
 import { CountTo } from 'vue3-count-to';
-export default {
+import { defineComponent } from 'vue'
+export default defineComponent({
   components: { CountTo }
-};
+})
 </script>
 
 <style lang="scss" scoped>

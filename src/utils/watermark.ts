@@ -17,18 +17,20 @@ let watermark: WaterMark = {
 
 let setWatermark = (str: string) => {
   let id = '1.23452384164.123412415'
-  if (document.getElementById(id) !== null) {
-    document.body.removeChild(document.getElementById(id))
+  let doc =  document.getElementById(id)
+  if (doc !== null) {
+    document.body.removeChild(doc)
   }
-  let can = document.createElement('canvas')
+  let can: HTMLCanvasElement = document.createElement('canvas') as HTMLCanvasElement
   can.width = 150
   can.height = 120
-  let cans = can.getContext('2d')
-  cans?.rotate(-20 * Math.PI / 180)
+  
+  let cans : CanvasRenderingContext2D = can.getContext('2d') as CanvasRenderingContext2D
+  cans.rotate(-20 * Math.PI / 180)
   cans.font = '20px Vedana'
   cans.fillStyle = 'rgba(200, 200, 200, 0.20)'
   cans.textAlign = 'left'
-  cans.textBaseline = 'Middle'
+  cans.textBaseline = 'middle'
   cans?.fillText(str, can.width / 3, can.height / 2)
   let div = document.createElement('div')
   div.id = id
@@ -58,10 +60,9 @@ watermark.set = (str) => {
 
 watermark.out = () =>{
     let id = '1.23452384164.123412415'
-
-    if (document.getElementById(id) !== null) {
-        const div = document.getElementById(id)
-        div.style.display = 'none'
+    let doc = document.getElementById(id)
+    if ( doc !== null) {
+        doc.style.display = 'none'
     }
 }
 
