@@ -1,5 +1,6 @@
 <template>
     <el-container style="height:100%">
+        <Feature />
         <Sidebar />
         <el-container>
             <el-header style="height: 48px">
@@ -15,8 +16,9 @@ import { defineComponent } from "vue";
 import Sidebar from './components/Sidebar/index.vue'
 import AppMain from './components/AppMain/index.vue'
 import Header from './components/Header/index.vue'
+import Feature from './feature/index.vue'
 export default defineComponent({
-    components: { Sidebar, AppMain, Header }
+    components: { Sidebar, AppMain, Header, Feature }
 })
 
 </script>

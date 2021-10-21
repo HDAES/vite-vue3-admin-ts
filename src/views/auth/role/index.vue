@@ -70,10 +70,7 @@ import { defineComponent, ref, reactive, onMounted } from "vue";
 import { BasicTable, TableActionType, TableColumns, UpDateType } from "@/components/BasicTable";
 import { getRoleList, putPermission, postRoleAdd, putRole, deleteRole } from "@/api/system/role";
 import { getPermissionTree } from '@/api/system/menu'
-import { ElTree, ElForm } from 'element-plus'
-
-type ElETree = InstanceType<typeof ElTree>
-type ElEForm = InstanceType<typeof ElForm>
+import { ElEForm, ElETree } from "@/elemntPlus";
 
 type RuleForm = {
   id?: string

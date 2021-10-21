@@ -68,9 +68,14 @@ const components = [
     ElInputNumber
 ]
 
+
+
 export function setupElementPlus(app: App<Element>) {
     components.forEach(component => {
         app.use(component)
     })
     app.config.globalProperties.$ELEMENT = { size: 'small', zIndex: 3000 }
 }
+
+export type ElETree = InstanceType<typeof ElTree>
+export type ElEForm = InstanceType<typeof ElForm>

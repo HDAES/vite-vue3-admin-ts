@@ -2,19 +2,8 @@ import { getUserInfo, putUserLogin, postLoginOut } from '@/api/system/login'
 import { setToken as setAuthToken, getToken, removeToken } from '@/utils/auth'
 import md5 from 'md5'
 import { defineStore } from 'pinia'
+import { UserState } from 'types/store'
 
-
-interface UserState{
-    token: string,
-    roles: string[],
-    permissions: Array<any>,
-    username: string
-}
-
-interface LoginRespones {
-    authorizationType: string,
-    authorization: string
-}
 
 export const useUserStore = defineStore({
     id: 'user',
@@ -40,15 +29,15 @@ export const useUserStore = defineStore({
             this.roles = roles
         },
         async login(data: any){
-            return new Promise<void>((resolve, reject) =>{
-                putUserLogin({...data,password: md5(data.password)}).then(res =>{
-                    setAuthToken(res.data.authorizationType + ' ' +res.data.authorization)
-                    this.setToken(res.data.authorizationType + ' ' +res.data.authorization)
-                    resolve()
-                }).catch(error => {
-                    reject(error)
-                })
+          return new Promise<void>((resolve, reject) =>{
+            putUserLogin({...data,password: md5(data.password)}).then(res =>{
+                setAuthToken(res.data.authorizationType + ' ' +res.data.authorization)
+                this.setToken(res.data.authorizationType + ' ' +res.data.authorization)
+                resolve()
+            }).catch(error => {
+                reject(error)
             })
+          })
         },
 
         getInfo(){

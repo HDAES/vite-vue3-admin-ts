@@ -122,3 +122,8 @@
 .el-card.is-always-shadow {
     box-shadow: none;
 }
+.lock-form{
+    .el-form-item__label{
+        padding: 0;
+    }
+}
