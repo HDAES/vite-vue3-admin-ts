@@ -29,8 +29,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
-import { onBeforeRouteUpdate, useRoute } from 'vue-router'
+import { defineComponent, ref, watchEffect } from 'vue'
+import { useRoute } from 'vue-router'
 import { useAppSetting } from '@/hooks/app/useAppStore'
 import FullScreen from '@/components/FullScreen/index.vue'
 import SelectLang from '@/components/SelectLang/index.vue'
@@ -42,12 +42,10 @@ export default defineComponent({
     components: { MenuUnfoldOutlined, MenuFoldOutlined, SearchOutlined, BellOutlined, FullScreen, SelectLang, Me, Setting },
     setup(){
         const { collapse, changeCollapse } = useAppSetting()
-        const matched = ref<any[]>(useRoute().matched)
-        
-        onBeforeRouteUpdate(to => {
-            matched.value = to.matched
-        })
+        const route = useRoute()
+        const matched = ref<any[]>(route.matched)
     
+        watchEffect(() =>  matched.value = route.matched)
         return {
             matched,
             collapse,
