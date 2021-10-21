@@ -45,7 +45,7 @@ instance.interceptors.response.use( (response: AxiosResponse<ResponseList>) =>{
         MessageHandle = ElMessage.error(response.data.message || '未知错误')
 
         useUserStore().loginOut().then(res =>{
-            location.href = '/login';
+            location.href = '/#/login';
         })
     }else{
         if(code == 200){
