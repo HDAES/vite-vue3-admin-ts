@@ -70,7 +70,7 @@
           </div>
         </template>
         <div class="single">
-          <CountTo :startVal='0' :endVal='1000' :duration='500' prefix="$"  style="font-size: 22px"/>
+          <CountTo :startVal='0' :endVal='1000' :duration='500' prefix="$" style="font-size: 22px"></CountTo>
           <svg-icon name="transaction" size="40"/>
         </div>
         <div class="all">
@@ -83,7 +83,7 @@
 </template>
 
 <script lang="ts">
-import { CountTo } from 'vue3-count-to';
+import  CountTo  from '@/components/CountTo/index.vue';
 import { defineComponent } from 'vue'
 export default defineComponent({
   components: { CountTo }
