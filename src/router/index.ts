@@ -1,4 +1,4 @@
-import type { RouteRecordRaw } from 'vue-router';
+import { createWebHistory, RouteRecordRaw } from 'vue-router';
 import type { App } from 'vue';
 import Layout from '@/layouts/default/index.vue'
 import { createRouter, createWebHashHistory } from 'vue-router';
@@ -24,7 +24,8 @@ const routes : RouteRecordRaw[] = [
 
 
 export const router = createRouter({
-    history: createWebHashHistory(import.meta.env.VITE_PUBLIC_PATH),
+    history:createWebHistory(),
+    //history: createWebHashHistory(import.meta.env.VITE_PUBLIC_PATH),
     routes,
 })
 

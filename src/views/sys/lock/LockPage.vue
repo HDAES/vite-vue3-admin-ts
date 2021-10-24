@@ -67,7 +67,7 @@ export default defineComponent({
         //返回登录
         const handleBackLogin = () =>{
             loginOut().then(() =>{
-                location.href = '/#/login';
+                location.href = '/login';
                 useLock.resetLockInfo()
             })
         }

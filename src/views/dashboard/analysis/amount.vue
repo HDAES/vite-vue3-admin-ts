@@ -16,12 +16,12 @@
         </template>
 
         <div class="single">
-          <CountTo :startVal='0' :endVal='1000' :duration='500' prefix="$" style="font-size: 22px"/>
+          <CountTo :startVal='0' :endVal='1000' :duration='500' style="font-size: 22px"/>
           <svg-icon name="visit-count" size="40"/>
         </div>
         <div class="all">
           <div>总访问数</div>
-          <CountTo :startVal='0' :endVal='1000' :duration='500' prefix="$"/>
+          <CountTo :startVal='0' :endVal='1000' :duration='500' />
         </div>
       </el-card>
     </el-col>
@@ -34,12 +34,12 @@
           </div>
         </template>
         <div class="single">
-          <CountTo :startVal='0' :endVal='1000' :duration='500' prefix="$" style="font-size: 22px"/>
+          <CountTo :startVal='0' :endVal='1000' :duration='500'  style="font-size: 22px"/>
           <svg-icon name="total-sales" size="40"/>
         </div>
         <div class="all">
           <div>总成交额</div>
-          <CountTo :startVal='0' :endVal='1000' :duration='500' prefix="$"/>
+          <CountTo :startVal='0' :endVal='1000' :duration='500' />
         </div>
       </el-card>
     </el-col>
@@ -52,12 +52,12 @@
           </div>
         </template>
         <div class="single">
-          <CountTo :startVal='0' :endVal='1000' :duration='500' prefix="$" style="font-size: 22px"/>
+          <CountTo :startVal='0' :endVal='1000' :duration='500'  style="font-size: 22px"/>
           <svg-icon name="download-count" size="40"/>
         </div>
         <div class="all">
           <div>总下载数</div>
-          <CountTo :startVal='0' :endVal='1000' :duration='500' prefix="$"/>
+          <CountTo :startVal='0' :endVal='1000' :duration='500' />
         </div>
       </el-card>
     </el-col>
@@ -70,12 +70,12 @@
           </div>
         </template>
         <div class="single">
-          <CountTo :startVal='0' :endVal='1000' :duration='500' prefix="$" style="font-size: 22px"></CountTo>
+          <CountTo :startVal='0' :endVal='1000' :duration='500'  style="font-size: 22px"></CountTo>
           <svg-icon name="transaction" size="40"/>
         </div>
         <div class="all">
           <div>总成交数</div>
-          <CountTo :startVal='0' :endVal='1000' :duration='500' prefix="$" />
+          <CountTo :startVal='0' :endVal='1000' :duration='500'  />
         </div>
       </el-card>
     </el-col>
@@ -83,7 +83,7 @@
 </template>
 
 <script lang="ts">
-import  CountTo  from '@/components/CountTo/index.vue';
+import { CountTo }  from 'vue3-count-to';
 import { defineComponent } from 'vue'
 export default defineComponent({
   components: { CountTo }
