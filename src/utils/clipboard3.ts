@@ -5,7 +5,7 @@
  */
 import Clipboard from 'clipboard'
 
-export default (opts) => {
+export default (opts: any) => {
   const appendToBody = opts?.appendToBody === undefined ? true : opts.appendToBody
 
   return {

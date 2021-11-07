@@ -10,17 +10,17 @@
   </div>
 </template>
 
-<script>
-import { ref } from 'vue' 
+<script lang="ts">
+import { ref, defineComponent } from 'vue' 
 import  useClipboard from '@/utils/clipboard3'
 import { ElMessage } from 'element-plus'
-export default {
+export default defineComponent({
     setup(){
         const text = ref('')
-        const { toClipboard } = useClipboard()
+        const { toClipboard } = useClipboard(null)
         const handleCopy = async () =>{
             try{
-                await toClipboard(text.value)
+                await toClipboard(text.value, null)
                 ElMessage.success('复制成功！')
             }catch(e){
                 ElMessage.error(e)
@@ -31,5 +31,5 @@ export default {
             handleCopy
         }
     }
-}
+})
 </script>
