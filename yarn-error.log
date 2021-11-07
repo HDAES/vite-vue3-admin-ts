@@ -1,21 +1,28 @@
 Arguments: 
-  D:\node\node.exe D:\node\node_modules\yarn\bin\yarn.js add element-plus
+  /usr/local/bin/node /usr/local/bin/yarn
 
 PATH: 
-  D:\cmder_mini\vendor\conemu-maximus5\ConEmu\Scripts;D:\cmder_mini\vendor\conemu-maximus5;D:\cmder_mini\vendor\conemu-maximus5\ConEmu;C:\Users\nciae\AppData\Local\Programs\Python\Python39\Scripts\;C:\Users\nciae\AppData\Local\Programs\Python\Python39\;C:\Python39\Scripts\;C:\Python39\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\ProgramData\chocolatey\bin;C:\Java\jdk-15.0.1\bin;C:\Program Files\MySQL\MySQL Server 5.7\bin;C:\Program Files\Git\cmd;D:\cmder_mini;D:\nvm;D:\node;C:\Program Files\python;C:\Program Files\python\Scripts;D:\BtSoft\panel\script;C:\Users\nciae\AppData\Local\Microsoft\WindowsApps;C:\VSCode\bin;C:\JetBrains\WebStorm2020.3\bin;D:\IntelliJ IDEA 2020.3.2\bin;D:\nvm;D:\node;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;D:\cmder_mini\vendor\bin
+  /usr/local/sbin:/usr/local/bin:/Users/xiaolei/资源库/flutter/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/usr/local/sbin:/Users/xiaolei/资源库/flutter/bin
 
 Yarn version: 
   1.22.10
 
 Node version: 
-  14.16.1
+  14.15.5
 
 Platform: 
-  win32 x64
+  darwin x64
 
 Trace: 
-  Error: connect ETIMEDOUT 104.16.20.35:443
-      at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1146:16)
+  Error: connect ENETUNREACH 104.16.25.35:443 - Local (0.0.0.0:62906)
+      at internalConnect (net.js:921:16)
+      at defaultTriggerAsyncIdScope (internal/async_hooks.js:430:12)
+      at emitLookup (net.js:1064:9)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:107131:28
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:107040:13
+      at RawTask.module.exports.RawTask.call (/usr/local/lib/node_modules/yarn/lib/cli.js:83614:19)
+      at flush (/usr/local/lib/node_modules/yarn/lib/cli.js:83696:29)
+      at processTicksAndRejections (internal/process/task_queues.js:75:11)
 
 npm manifest: 
   {
@@ -29,9 +36,11 @@ npm manifest:
     "dependencies": {
       "axios": "^0.21.4",
       "dayjs": "^1.10.7",
+      "element-plus": "^1.1.0-beta.12",
       "md5": "^2.3.0",
       "mockjs": "^1.1.0",
       "nprogress": "^0.2.0",
+      "pinia": "^2.0.0-rc.9",
       "store": "^2.0.12",
       "vue": "^3.2.6",
       "vue-router": "^4.0.11"

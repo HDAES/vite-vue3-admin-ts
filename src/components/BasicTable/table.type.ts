@@ -25,7 +25,8 @@ export type TableColumns = {
     slotname?: string,
     show?: boolean,
     width?: number,
-    sortable?: boolean
+    sortable?: boolean,
+    showOverflowTooltip?: boolean
 }
 
 export type ExportConfig = {

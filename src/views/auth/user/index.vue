@@ -231,10 +231,12 @@ export default {
       {
         title: '创建时间',
         dataIndex: 'createTime',
+        showOverflowTooltip: true
       },
       {
         title: '更新时间',
-        dataIndex: 'updateTime'
+        dataIndex: 'updateTime',
+        showOverflowTooltip: true
       },{
         title: '操作',
         width: 150,

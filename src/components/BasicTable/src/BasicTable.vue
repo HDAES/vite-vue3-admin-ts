@@ -68,6 +68,7 @@
               <el-table-column v-if="tableConfig.index&&pagination.total>0"  type="index" width="100" align="center" :index="1" :label="tableConfig.indexName || '序号'"></el-table-column>
               <template v-for="(item,index) in columns" :key="index">
                 <el-table-column
+                 :key="index"
                   v-if="item.show != false"
                   :label="item.title"
                   :prop="item.dataIndex"
@@ -75,6 +76,7 @@
                   :align="item.align || 'left'"
                   :width="item.width"
                   :formatter="item.formatter"
+                  :show-overflow-tooltip="item.showOverflowTooltip || false"
                   >
                     <template v-if="!item.formatter" #default="scope">
                       <template v-if="item.slotname">
@@ -202,7 +204,7 @@ export default {
       border: false,
       size: 'small',
       showHeader: true,
-      index: true,
+      index: false,
       selection: true
     } as TableConfig
 
@@ -220,7 +222,7 @@ export default {
       exprotNum: 10
     })
     const exportColunmsFun = reactive({})
-    const tableData = ref<any[]>([])
+    const tableData = ref<any[] | null>(null)
     const tempFormData = reactive({})
     const pagination = reactive({
       total: 0,
