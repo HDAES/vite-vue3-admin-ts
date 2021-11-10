@@ -9,6 +9,7 @@
 <script lang="ts">
 import { onMounted, onBeforeUnmount, ref, reactive } from 'vue';
 import WangEditor from 'wangeditor';
+import { isPhone } from '@/utils/utils'
 // https://www.wangeditor.com/doc/
 // tinymce
 export default {
