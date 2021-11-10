@@ -23,7 +23,7 @@ export default defineComponent({
                 await toClipboard(text.value, null)
                 ElMessage.success('复制成功！')
             }catch(e){
-                ElMessage.error(e)
+                ElMessage.error('复制失败')
             }
         }
         return {
