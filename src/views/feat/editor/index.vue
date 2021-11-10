@@ -9,7 +9,7 @@
 <script lang="ts">
 import { onMounted, onBeforeUnmount, ref, reactive } from 'vue';
 import WangEditor from 'wangeditor';
-import { isPhone } from '@/utils/utils'
+
 // https://www.wangeditor.com/doc/
 // tinymce
 export default {
@@ -23,6 +23,7 @@ export default {
         let instance;
         onMounted(() => {
             instance = new WangEditor(editor.value);
+            instance.config.menuTooltipPosition = 'down'
             Object.assign(instance.config, {
                 onchange() {
                     console.log('change');

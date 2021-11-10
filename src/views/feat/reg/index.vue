@@ -29,7 +29,7 @@
 
 <script lang="ts">
 import { defineComponent, reactive } from "vue";
-import { phoneReg, idCardReg } from "@/utils/utils";
+import { phoneReg, idCardReg, emailReg, urlReg, wxReg, carNoReg, passwordReg} from "@/utils/utils";
 import { ElMessage } from 'element-plus'
 interface formState {
     reg: RegExp | null,
@@ -62,11 +62,31 @@ export default defineComponent({
       options: [
         {
           value: phoneReg,
-          label: "手机号码的校验",
+          label: "手机号码校验",
         },
         {
           value: idCardReg,
-          label: "身份证的校验",
+          label: "身份证校验",
+        },
+        {
+          value: emailReg,
+          label: "邮箱校验",
+        },
+        {
+          value: urlReg,
+          label: "URL的校验",
+        },
+        {
+          value: wxReg,
+          label: "微信号校验",
+        },
+        {
+          value: carNoReg,
+          label: "车牌号校验",
+        },
+        {
+          value: passwordReg,
+          label: "密码强度校验",
         },
       ],
     };

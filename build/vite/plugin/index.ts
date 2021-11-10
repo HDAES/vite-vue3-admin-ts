@@ -3,6 +3,7 @@ import type { Plugin } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import windiCSS from 'vite-plugin-windicss';
 
+import { configHtmlPlugin } from './html';
 import { configElementPlusPlugin } from './elementPlus'
 import { configSvgIconsPlugin } from './svgSprite'
 import { configCompressPlugin } from './compress'
@@ -36,6 +37,8 @@ export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
     // vite-plugin-mock
     VITE_USE_MOCK && vitePlugins.push(configMockPlugin(isBuild))
 
+    // vite-plugin-html
+    vitePlugins.push(configHtmlPlugin(viteEnv, isBuild));
 
     if (isBuild) {
         //vite-plugin-compression
