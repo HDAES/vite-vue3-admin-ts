@@ -16,4 +16,7 @@ import Sidebar from './components/Sidebar/index.vue'
 import AppMain from './components/AppMain/index.vue'
 import Header from './components/Header/index.vue'
 import Feature from './feature/index.vue'
+import { text } from '@/api/system/user'
+
+text()
 </script>

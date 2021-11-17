@@ -45,3 +45,9 @@ export function putUserStatus(data) {
         data
     })
 }
+
+export function text() {
+    return request({
+        url: '/admin/index/hello',
+    })
+}
