@@ -11,6 +11,7 @@ export const useUserStore = defineStore({
         token: getToken(),
         roles: [],
         permissions: [],
+        hasRole: [],
         username: ''
     }),
     getters: {
@@ -19,14 +20,24 @@ export const useUserStore = defineStore({
         },
         getRoles(): string[]{
           return this.roles
-        }
+        },
+        getHasRole(): string[]{
+          return this.hasRole
+        },
     },
     actions: {
         setToken(token: string): void {
-            this.token = token
+          this.token = token
         },
         setRoles(roles: []): void {
-            this.roles = roles
+          this.roles = roles
+        },
+        setHasRole(hasRole: []): void {
+          let list: any[] = []
+          hasRole.forEach(item =>{
+            list.push(Object.values(item)[0])
+          })
+          this.hasRole = list
         },
         async login(data: any){
           return new Promise<void>((resolve, reject) =>{
@@ -43,6 +54,7 @@ export const useUserStore = defineStore({
         getInfo(){
             return new Promise((resolve, reject) => {
               getUserInfo().then(res =>{
+                this.setHasRole(res.data.authorities)
                 this.username = res.data.username
                 this.setRoles(res.data.roles)
                 resolve(true)

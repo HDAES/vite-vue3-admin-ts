@@ -27,11 +27,11 @@
 </template>
 
 <script>
-import { useUser } from "@/hooks/user";
+import { userHook } from "@/hooks/user";
 import { firstLetterToUpperCase } from "@/utils/utils";
 export default {
   setup() {
-    const { userName, roles } = useUser();
+    const { userName, roles } = userHook();
 
     return {
       userName: firstLetterToUpperCase(userName.value),

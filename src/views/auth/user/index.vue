@@ -11,6 +11,7 @@
     >
       <template #status="scope">
         <el-switch 
+          v-has="'btn:auth:user:status'"
           v-model="scope.row.status" 
           :active-value="1" 
           :inactive-value="0" 
@@ -20,7 +21,7 @@
           />
       </template>
       <template #operate="scope">
-        <el-button @click="handleChangePassWord(scope.row)" type="text">改密</el-button>
+        <el-button @click="handleChangePassWord(scope.row)" v-has="'btn:auth:user:edit'" type="text">改密</el-button>
       </template>
     </BasicTable>
 
@@ -177,7 +178,7 @@ export default {
       }).catch(() => {
         ElMessage({
           type: 'info',
-          message: '取消输入',
+          message: '已取消',
         })
       })
     }

@@ -35,7 +35,7 @@
 import { defineComponent, ref } from 'vue'
 import { LockOutlined } from '@ant-design/icons-vue'
 import { firstLetterToUpperCase } from '@/utils/utils'
-import { useUser } from '@/hooks/user';
+import { userHook } from '@/hooks/user';
 import { useLockStore } from '@/store/modules/lock';
 import { ElMessage } from 'element-plus';
 import md5 from 'md5';
@@ -45,7 +45,7 @@ export default defineComponent({
     setup(){
         const showDate = ref(true);
         const psw = ref<string>('')
-        const { userName, roles, loginOut } = useUser()
+        const { userName, roles, loginOut } = userHook()
 
         const useLock = useLockStore()
         const handleShowForm = (value) =>{

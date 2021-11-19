@@ -30,12 +30,9 @@ export const usePermissionStore = defineStore({
           getPermissionUser().then(res =>{
             const sdata = JSON.parse(JSON.stringify(res.data))
             const rdata = JSON.parse(JSON.stringify(res.data))
-
             const myRoutes: any[] = filterAsyncRouter(sdata, false, true)
             const sidebarRoutes = filterAsyncRouter(rdata)
-            
             this.setSidebarRouters(sidebarRoutes)
-
             resolve(myRoutes)
           })
         })

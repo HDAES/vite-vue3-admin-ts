@@ -18,7 +18,7 @@
                 />
             </template>
             <template #operate="scope">
-                <el-button @click="handleKickOut(scope.row)" style="color:#f00" type="text">踢出</el-button>
+                <el-button @click="handleKickOut(scope.row)" v-has="'btn:sys:monitor:delete'" style="color:#f00" type="text">踢出</el-button>
             </template>
         </BasicTable>
     </div>

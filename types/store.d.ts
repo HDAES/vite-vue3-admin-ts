@@ -10,7 +10,8 @@ export interface UserState{
     token: string,
     roles: string[],
     permissions: Array<any>,
-    username: string
+    username: string,
+    hasRole: string[]
 }
 
 export interface LoginRespones {

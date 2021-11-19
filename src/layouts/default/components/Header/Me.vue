@@ -53,7 +53,7 @@
 <script lang="ts">
 import { defineComponent, ref, reactive } from "vue"
 import { GithubOutlined, LockOutlined, PoweroffOutlined } from '@ant-design/icons-vue'
-import { useUser } from "@/hooks/user/index"
+import { userHook } from "@/hooks/user/index"
 import { firstLetterToUpperCase } from '@/utils/utils'
 import { useLockStore } from '@/store/modules/lock'
 import { ElEForm } from "@/elemntPlus"
@@ -67,7 +67,7 @@ export default defineComponent({
         const visible = ref<boolean>(false)
         const formRef = ref<ElEForm>()
         const useLock = useLockStore()
-        const { loginOut, userName, roles } = useUser()
+        const { loginOut, userName, roles } = userHook()
 
         const formData = reactive<FormData>({
             lockPassWord: ''

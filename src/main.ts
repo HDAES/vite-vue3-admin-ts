@@ -12,6 +12,7 @@ import { setupRouter } from '@/router'
 import { setupElementPlus } from '@/elemntPlus';
 import { setupStore } from '@/store'
 import { SvgIcon } from '@/components/Icon/index'
+import { setupHasRole } from '@/utils/hasPermission'
 import './permission'
 import App from './App.vue'
 
@@ -25,6 +26,8 @@ async function bootstrap() {
     setupElementPlus(app)
     
     setupStore(app)
+    
+    setupHasRole(app)
 
     app.component('SvgIcon',SvgIcon).mount('#app');
 }

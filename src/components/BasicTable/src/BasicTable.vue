@@ -2,7 +2,7 @@
   <div class="basic-table">
     <div class="table-header">
       <el-space wrap>
-        <el-button icon="el-icon-plus" :disabled="(typeof editAdd) == 'undefined'" @click="editAdd('add')">新增</el-button>
+        <el-button icon="el-icon-plus" v-has="'btn'+ hasRole +':add'" :disabled="(typeof editAdd) == 'undefined'" @click="editAdd('add')">新增</el-button>
         <el-button icon="el-icon-edit" :disabled="selectList.length != 1 || (typeof editAdd) == 'undefined'" @click="editAdd('edit',selectList[0])">修改</el-button>
         <el-button icon="el-icon-delete" :disabled="selectList.length == 0" @click="handleDelBtn('multiple',[])">删除</el-button>
         <el-button icon="el-icon-download" @click="dialogExeclVisible = true" :loading="exportLoading">导出</el-button>
@@ -81,9 +81,9 @@
                     <template v-if="!item.formatter" #default="scope">
                       <template v-if="item.slotname">
                         <template v-if="item.slotname == 'operate'">
-                          <el-button v-if="!customOperate" type="text" @click.stop="editAdd('edit',scope.row)">编辑</el-button>
+                          <el-button v-if="!customOperate" type="text" v-has="'btn'+ hasRole +':edit'"  @click.stop="editAdd('edit',scope.row)">编辑</el-button>
                           <slot :name="item.slotname" :row="scope.row" />
-                          <el-button v-if="!customOperate" type="text" style="color:#f00" @click.stop="handleDelBtn('single',scope.row)">删除</el-button>
+                          <el-button v-if="!customOperate" type="text" v-has="'btn'+ hasRole +':delete'" style="color:#f00" @click.stop="handleDelBtn('single',scope.row)">删除</el-button>
                         </template>
                         <slot v-else :name="item.slotname" :row="scope.row" />
                       </template>
@@ -150,6 +150,8 @@ import { ElMessage } from 'element-plus';
 import ColumnSetting from './ColumnSetting.vue';
 import draggable from 'vuedraggable';
 import ExportJsonExcel from '@/utils/exportExecl';
+import { useRoute } from 'vue-router'
+
 import type { TableConfig, TableColumns, DeleletType,ExportConfig } from '../table.type'
 export default {
   components: { ColumnSetting, draggable },
@@ -207,7 +209,9 @@ export default {
       index: false,
       selection: true
     } as TableConfig
+    const route  = useRoute()
 
+    const hasRole = ref<string>(route.path.replace(/\//g,":"))
     const tableConfig = reactive<TableConfig>({...defaultConfig,...props.tableConfig})
     const table = ref<any>(null)
     const selectList = ref<any[]>([])
@@ -334,6 +338,7 @@ export default {
       tableData,
       selectList,
       loading,
+      hasRole,
       tableConfig,
       pagination,
       handleRefresh,

@@ -71,7 +71,7 @@ import { BasicTable, TableActionType, TableColumns, UpDateType } from "@/compone
 import { getRoleList, putPermission, postRoleAdd, putRole, deleteRole } from "@/api/system/role";
 import { getPermissionTree } from '@/api/system/menu'
 import { ElEForm, ElETree } from "@/elemntPlus";
-
+import { userHook } from '@/hooks/user'
 type RuleForm = {
   id?: string
   name: string
@@ -85,6 +85,7 @@ type Dialog = {
 export default defineComponent({
   components: { BasicTable },
   setup() {
+    const { getInfo } = userHook()
     const optionsTree = ref([])
     const cellId = ref<string>('')
     const treeRef = ref<ElETree | null>(null)
@@ -112,6 +113,8 @@ export default defineComponent({
         permissionIds: treeRef.value?.getCheckedKeys(false)
       }).then(res =>{
         tableRef.value?.handleRefresh()
+        //刷新用户权限
+        getInfo()
       })
     }
 
