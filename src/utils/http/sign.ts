@@ -42,3 +42,15 @@ export function setSign(config: AxiosRequestConfig, timestamp: Number) : string{
     }
     return Md5(str + Md5(timestamp.toString().substring(0, 8)) + timestamp)
 }
+
+export function setUploadSign(){
+    //获取当前时间
+    const timestamp: Number = new Date().getTime();
+    const version: string = '1.0.0'
+
+    return {
+        timestamp,
+        version,
+        sign: Md5('' + Md5(timestamp.toString().substring(0, 8)) + timestamp)
+    }
+}

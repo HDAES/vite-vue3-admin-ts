@@ -8,7 +8,8 @@
         <el-tab-pane label="本地上传" name="local">
           <el-upload
             drag
-            action="https://jsonplaceholder.typicode.com/posts/"
+            action="http://127.0.0.1:8090/upload/oss"
+            :headers="headers"
             multiple
           >
             <i class="el-icon-upload"></i>
@@ -49,14 +50,18 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref, reactive } from "vue";
+import { setUploadSign } from '@/utils/http/sign'
 export default defineComponent({
   setup() {
-    const activeName = ref("local");
+    const activeName = ref("local")
+    const headers = reactive(setUploadSign())
+    
     const handleClick = (tab, event) => {
       console.log(tab, event);
     };
     return {
+      headers,
       handleClick,
       activeName,
     };
