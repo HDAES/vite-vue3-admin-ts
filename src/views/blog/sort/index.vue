@@ -1,6 +1,8 @@
 <template>
     <div >
-        <BasicTable 
+         <UploadMedia />
+
+        <!-- <BasicTable 
          :columns="columns" 
         :getData="getBlogSort"
         :edit-add="handleEditAdd"
@@ -12,7 +14,9 @@
       width="600px"
       @closed="closed"
       >
-      </el-dialog>
+      </el-dialog> -->
+
+     
     </div>
 </template>
  
@@ -20,8 +24,9 @@
 import { defineComponent,reactive } from "vue";
 import { BasicTable, TableActionType, TableColumns, UpDateType } from '@/components/BasicTable'
 import { getBlogSort, postBlogSort } from '@/api/blog/sort'
+import { UploadMedia } from "@/components/UploadMedia"
 export default defineComponent({
-    components: { BasicTable },
+    components: { BasicTable,UploadMedia },
     setup() {
 
         const dialog = reactive({

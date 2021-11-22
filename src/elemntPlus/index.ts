@@ -30,6 +30,7 @@ import {
     ElSelect,
     ElOption,
     ElTree,
+    ElUpload,
     ElInputNumber
     
 } from 'element-plus';
@@ -65,6 +66,7 @@ const components = [
     ElLoading,
     ElSelect,
     ElTree,
+    ElUpload,
     ElInputNumber
 ]
 
