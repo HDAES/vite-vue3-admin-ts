@@ -8,7 +8,7 @@
         <el-tab-pane label="本地上传" name="local">
           <el-upload
             drag
-            action="http://127.0.0.1:8090/file/oss"
+            :action="action"
             :headers="headers"
             multiple
           >
@@ -57,6 +57,7 @@ export default defineComponent({
     const activeName = ref("local")
     const mediaList = ref<FileType[]>([])
     const mediaNext = ref<Boolean>(true)
+    const action = ref(import.meta.env.VITE_GLOB_API_URL + '/file/oss') 
     const params = reactive({
       page: 1,
       size: 10
@@ -96,6 +97,7 @@ export default defineComponent({
     
     return {
       load,
+      action,
       headers,
       mediaList,
       handleDel,
