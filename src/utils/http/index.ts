@@ -1,7 +1,7 @@
 import { useUserStore } from '@/store/modules/user';
 import axios, { AxiosRequestConfig, AxiosResponse, AxiosInstance } from 'axios'
 import { ElMessage, ElLoading, ILoadingInstance, IMessageHandle } from 'element-plus'
-import { ResponseList } from 'types/axios';
+import {  ResponseList } from 'types/axios';
 import { addPending, removePending } from './pending';
 import { setRequestConfig } from './sign';
 
@@ -78,3 +78,4 @@ instance.interceptors.response.use( (response: AxiosResponse<ResponseList>) =>{
 })
 
 export default instance
+

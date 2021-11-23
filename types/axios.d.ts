@@ -23,6 +23,19 @@ declare module 'axios' {
 
 
 
+export interface ResponseLists<T> {
+    code: Number,
+    data: {
+        list: T[],
+        page: Number,
+        pages: Number,
+        size: Number,
+        total: Number
+    },
+    message: string
+    
+}
+
 export interface ResponseList {
     code: Number,
     data: {

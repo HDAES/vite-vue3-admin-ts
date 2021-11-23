@@ -51,6 +51,7 @@ export function setUploadSign(){
     return {
         timestamp,
         version,
+        Authorization: getToken() ,
         sign: Md5('' + Md5(timestamp.toString().substring(0, 8)) + timestamp)
     }
 }
