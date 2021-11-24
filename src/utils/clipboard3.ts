@@ -9,14 +9,13 @@ export default (opts: any) => {
   const appendToBody = opts?.appendToBody === undefined ? true : opts.appendToBody
 
   return {
-    toClipboard(text, container) {
+    toClipboard(text) {
       return new Promise((resolve, reject) => {
         const fakeEl = document.createElement('button')
         // setup a new Clipboard.js
         const clipboard = new Clipboard(fakeEl, {
           text: () => text,
           action: () => 'copy',
-          container: container !== undefined ? container : document.body
         })
         clipboard.on('success', (e) => {
           clipboard.destroy()

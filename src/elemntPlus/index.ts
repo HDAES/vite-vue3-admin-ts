@@ -30,6 +30,7 @@ import {
     ElSelect,
     ElOption,
     ElTree,
+    ElImage,
     ElUpload,
     ElInputNumber,
     ElInfiniteScroll
@@ -68,6 +69,7 @@ const components = [
     ElSelect,
     ElTree,
     ElUpload,
+    ElImage,
     ElInfiniteScroll,
     ElInputNumber
 ]

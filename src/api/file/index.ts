@@ -1,5 +1,6 @@
-import { FileType } from '@/components/UploadMedia/media.type'
+import { FileType, uploadRes } from '@/components/UploadMedia/media.type'
 import request from '@/utils/http'
+import { AxiosResponse } from 'axios'
 
 import { BasePagination, ResponseList } from 'types/axios'
 
@@ -22,7 +23,7 @@ export function delelteFile(params) {
 
 //上传文件
 export function postFile(data) {
-    return request({
+    return request<AxiosResponse<uploadRes>>({
         url: '/file/oss',
         method: 'post',
         isForm: true,

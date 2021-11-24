@@ -1,5 +1,4 @@
 
-
 export type FileType = {
     id: Number,
     name: string,
@@ -13,4 +12,9 @@ export type FileType = {
     createTime: string,
     updateTime:  string,
 
+}
+
+export type uploadRes = {
+    name: string,
+    url: string
 }

@@ -20,7 +20,7 @@ export default defineComponent({
         const { toClipboard } = useClipboard(null)
         const handleCopy = async () =>{
             try{
-                await toClipboard(text.value, null)
+                await toClipboard(text.value)
                 ElMessage.success('复制成功！')
             }catch(e){
                 ElMessage.error('复制失败')
