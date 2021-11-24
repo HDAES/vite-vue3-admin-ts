@@ -33,7 +33,7 @@ instance.interceptors.request.use( (config: AxiosRequestConfig) => {
 })
 
 //响应拦截
-instance.interceptors.response.use( (response: AxiosResponse<ResponseList>) =>{
+instance.interceptors.response.use((response: AxiosResponse) =>{
     removePending(response)
     loadingInstance?.close()
 

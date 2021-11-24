@@ -133,23 +133,6 @@
 }
 
 
-.media-list{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    height: 320px;
-    .media-item{
-      flex-basis: 150px;
-      height: 150px;
-      border: 1px dashed #ccc;
-      border-radius: 5px;
-      img{
-            height: 150px;
-            width: 150px;
-            object-fit: contain;
-            border-radius: 5px;
-      }
-    }
-  }
+
 
 [display=none] { display: none }

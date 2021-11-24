@@ -31,8 +31,8 @@ import {
     ElOption,
     ElTree,
     ElUpload,
-    ElInfiniteScroll,
-    ElInputNumber
+    ElInputNumber,
+    ElInfiniteScroll
     
 } from 'element-plus';
 

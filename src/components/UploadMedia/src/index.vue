@@ -1,10 +1,10 @@
 <template>
   <div class="upload-media">
-    <el-popover placement="bottom-start" :width="850" trigger="click"  @show="popoverShow">
+    <el-popover placement="bottom-start" :width="700" trigger="click" @show="popoverShow">
       <template #reference>
         <el-button>click 激活</el-button>
       </template>
-      <el-tabs v-model="activeName" type="border-card" @tab-click="handleClick">
+      <el-tabs v-model="activeName" type="border-card" @tab-click="handleTabClick">
         <el-tab-pane label="本地上传" name="local">
           <el-upload
             drag
@@ -33,28 +33,57 @@
 
         </el-tab-pane>
         <el-tab-pane label="媒体库" name="media">
+         
             <div class="media-list" v-infinite-scroll="load" :infinite-scroll-immediate="false" style="overflow:auto">
-              <div class="media-item" v-for="item in mediaList" :key="item.id">
+              <div class="media-item" v-for="item in mediaList" :key="item.id.toString()">
+                <div class="box">
                   <img :src="item.fullPath" alt="" @click="handleDel(item)">
+                </div>
+              </div>
+
+              <div class="upload">
+                <div class="box">
+                   <i class="el-icon-plus icon"></i>
+                </div>
               </div>
               
+               
             </div>
-           
             <el-button type="primary">确定</el-button>
         </el-tab-pane>
       </el-tabs>
     </el-popover>
+
+    <div style="width:700px">
+
+      <div class="media-list" v-infinite-scroll="load" :infinite-scroll-immediate="false" style="overflow:auto">
+      <div class="media-item" v-for="item in mediaList" :key="item.id.toString()">
+        <div class="box">
+          <img :src="item.fullPath" alt="" @click="handleDel(item)">
+        </div>
+      </div>
+
+      <div class="upload">
+        <div class="upload-box" @click="fileInput.click">
+            <i class="el-icon-plus icon"></i>
+            <input ref="fileInput" type="file" class="file" @change="handleFileChange"/>
+        </div>
+      </div>
+    </div>
+
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref, reactive } from "vue";
 import { setUploadSign } from '@/utils/http/sign'
-import { getFileList,delelteFile } from '@/api/file/index'
+import { getFileList,delelteFile ,postFile } from '@/api/file/index'
 import { FileType } from "../media.type";
 export default defineComponent({
   setup() {
     const activeName = ref("local")
+    const fileInput = ref<HTMLInputElement>(new HTMLInputElement())
     const mediaList = ref<FileType[]>([])
     const mediaNext = ref<Boolean>(true)
     const action = ref(import.meta.env.VITE_GLOB_API_URL + '/file/oss') 
@@ -64,19 +93,19 @@ export default defineComponent({
     })
     const headers = reactive(setUploadSign())
     
-    const handleClick = (tab, event) => {
-      console.log(tab, event);
-    };
+    
 
+    //首次加载
     const popoverShow =  () =>{
-      if(mediaNext.value){
-        getFileList(params).then(res =>{
-          mediaList.value = [...mediaList.value,...res.list]
-          mediaNext.value = res.page < res.pages
-        })
-      }
+      getFileList(params).then(res =>{
+        console.log(res)
+        mediaList.value = [...mediaList.value,...res.list]
+        mediaNext.value = res.page < res.pages
+      })
+      
     }
-
+    popoverShow()
+    //删除图片
     const handleDel = (row: FileType) =>{
       delelteFile({ids: row.id}).then(res =>{
         const tempList: FileType[] =  []
@@ -89,27 +118,92 @@ export default defineComponent({
       })
     }
 
+
+    //加载更多
     const load = () =>{
-      console.log('12312')
       params.page +=1
-      popoverShow()
+      if(mediaNext.value){
+        popoverShow()
+      }
     }
     
+    const handleTabClick = () =>{
+
+    }
+
+   
+
+
+    const handleFileChange = () =>{
+      let uploadfile: FileList | null = fileInput.value.files
+
+      if(uploadfile){
+        const formData = new FormData()
+        formData.append('file',uploadfile[0])
+        //上传文件
+        postFile(formData)
+      }
+    }
     return {
       load,
+      fileInput,
       action,
       headers,
+      handleTabClick,
+      handleFileChange,
       mediaList,
       handleDel,
-      handleClick,
       popoverShow,
       activeName,
     };
   },
 });
 </script>
-<style lang="scss" scoped>
-.upload-media{
-  
-}
+<style lang="scss">
+.media-list{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    max-height: 320px;
+    .media-item,.upload{
+      flex-basis:20%;
+      height: 120px;
+      margin-bottom: 10px;
+     .box{
+        border: 1px dashed #ccc;
+        border-radius: 5px;
+        width: 120px;
+        height: 120px;
+        
+        img{
+          height: 120px;
+          width: 120px;
+          object-fit: contain;
+          border-radius: 5px;
+        }
+        
+      }
+      .upload-box{
+        border: 1px dashed #ccc;
+        border-radius: 5px;
+        width: 120px;
+        height: 120px;
+        line-height: 120px;
+        text-align: center;
+        cursor: pointer;
+        .icon{
+          font-size: 24px;
+        }
+        .file{
+          display: none;
+        }
+      }
+      .upload-box:hover{
+        border-color: #0960BD;
+      }
+    }
+    
+    
+  }
 </style>

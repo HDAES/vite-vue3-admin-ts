@@ -17,41 +17,26 @@ declare module 'axios' {
         version?: string, //版本号
         loading?: Boolean, //全局loading
         isToken?: Boolean,
-        isMock?: Boolean
+        isMock?: Boolean,
+        isForm?: boolean
+    }
+
+    export interface AxiosInstance {
+        <T = any>(config: AxiosRequestConfig): Promise<T>;
+        request<T = any> (config: AxiosRequestConfig): Promise<AxiosResponse<T>>;
     }
 }
 
 
-
-export interface ResponseLists<T> {
-    code: Number,
-    data: {
-        list: T[],
-        page: Number,
-        pages: Number,
-        size: Number,
-        total: Number
-    },
-    message: string
-    
-}
-
-export interface ResponseList {
-    code: Number,
-    data: {
-        list: any[],
-        page: Number,
-        pages: Number,
-        size: Number,
-        total: Number
-    },
-    message: string
-    
-}
-export interface List{
-    list: any[],
+export interface ResponseList<T> {
+    list: T[],
     page: Number,
     pages: Number,
     size: Number,
     total: Number
+}
+
+export interface BasePagination{
+    page:Number,
+    size: Number
 }

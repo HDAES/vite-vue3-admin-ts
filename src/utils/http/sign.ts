@@ -27,6 +27,11 @@ export function setRequestConfig(config: AxiosRequestConfig) : AxiosRequestConfi
    
     // 设置请求头部
     config.baseURL = config.isMock? import.meta.env.VITE_GLOB_API_MOCK: import.meta.env.VITE_GLOB_API_URL
+    
+    //是否form表单
+    if(config.isForm){
+        config.headers['Content-Type'] = 'application/x-www-form-urlencoded'
+    }
 
     return config;
 }
