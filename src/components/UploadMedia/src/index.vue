@@ -19,12 +19,19 @@
         </el-tab-pane>
         <el-tab-pane label="网络图片" name="url">
           <div class="url">
-            <el-input v-model="url" placeholder="请输入内容">
-              <template #prepend>
-                <i class="el-icon-cloudy"></i>
-              </template>
-            </el-input>
-
+            <el-row :gutter="20">
+              <el-col :span="21">
+                <el-input v-model="url" placeholder="请输入内容">
+                  <template #prepend>
+                    <i class="el-icon-cloudy"></i>
+                  </template>
+                </el-input>
+              </el-col>
+              <el-col :span="2">
+                <el-button type="primary" @click="handleImageClick(url)">确定</el-button>
+              </el-col>
+            </el-row>
+      
             <el-image
               style="width: 120px; height: 120px;margin-top: 10px;"
               :src="url"
@@ -47,7 +54,7 @@
             >
               <!-- 图片展示框 -->
               <div class="box">
-                <img :src="item.fullPath" :alt="item.name" @click="handleImageClick(item)"/>
+                <img :src="item.fullPath" :alt="item.name" @click="handleImageClick(item.fullPath)"/>
               </div>
 
               <!-- 遮罩层 -->
@@ -95,10 +102,7 @@ export default defineComponent({
     const action = ref(import.meta.env.VITE_GLOB_API_URL + '/file/oss')
     const url = ref<string>('')
     const headers = reactive(setUploadSign())
-    const params = reactive({
-      page: 1,
-      size: 10
-    })
+    const params = reactive({page: 1,size: 10})
     const { toClipboard } = useClipboard(null)
   
 
@@ -157,7 +161,6 @@ export default defineComponent({
 
     }
 
-   
     //上传文件
     const handleFileChange = () => {
       let uploadfile: any = fileInput.value?.files
@@ -175,8 +178,8 @@ export default defineComponent({
       showMaskId.value = item.id
     }
 
-    const handleImageClick = (item: FileType) =>{
-      context.emit('update:url', item.fullPath)
+    const handleImageClick = (url: string) =>{
+      context.emit('update:url', url)
     }
 
     //刷新当前页
