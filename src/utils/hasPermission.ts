@@ -13,7 +13,10 @@ export function setupHasRole(app: App<Element>){
           //获取按钮权限
           if (!app.config.globalProperties.$_has(binding.value)) {
             //移除不匹配的按钮
-            el.parentNode.removeChild(el)
+            el.setAttribute('disabled',"")
+            el.classList.add('is-disabled')
+
+            //el.parentNode.removeChild(el)
           }
         },
       })

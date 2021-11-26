@@ -133,6 +133,25 @@
 }
 
 
+.el-dialog{
+    .el-dialog__header{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid #eee!important;
+        padding-top: 15px;
+        .el-dialog__headerbtn{
+            position: relative;
+            top: 0;
+            right: 0;
+        }
+    }
+    .el-dialog__footer{
+        border-top: 1px solid #eee!important;
+        padding-bottom: 10px;
+    }
+}
+
 
 
 [display=none] { display: none }

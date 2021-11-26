@@ -1,6 +1,6 @@
 <template>
   <div class="upload-media">
-    <el-popover placement="bottom-start" popper-class="upload-media-popover" :tabindex="510" :width="700" trigger="click" @show="popoverShow" @hide="popoverHide">
+    <el-popover ref="popoverRef" placement="bottom-start" popper-class="upload-media-popover" :tabindex="510" :width="700" trigger="click" @show="popoverShow" @hide="popoverHide">
       <template #reference>
         <el-button>上传文件</el-button>
       </template>
@@ -92,10 +92,12 @@ import { getFileList, delelteFile, postFile } from '@/api/file/index'
 import { FileType } from "../media.type";
 import  useClipboard from '@/utils/clipboard3'
 import { ElMessage } from "element-plus";
+import { ElEPopover } from "@/elemntPlus";
 export default defineComponent({
   setup(props,context) {
     const activeName = ref("local")
     const fileInput = ref<HTMLInputElement>()
+    const popoverRef = ref<ElEPopover | null>(null)
     const mediaList = ref<FileType[]>([])
     const mediaNext = ref<Boolean>(true)
     const showMaskId = ref<Number>()
@@ -180,6 +182,7 @@ export default defineComponent({
 
     const handleImageClick = (url: string) =>{
       context.emit('update:url', url)
+    
     }
 
     //刷新当前页
@@ -189,7 +192,7 @@ export default defineComponent({
       })
     }
 
-    
+  
     //复制地址
     const handleCopy = async (item: FileType) =>{
       try{
@@ -199,12 +202,20 @@ export default defineComponent({
           ElMessage.error('复制失败')
       }
     }
+
+    //打开popover
+    //打开Ref
+    const openPopover = () => {
+      popoverRef.value?.show()
+    }
     return {
       url,
       load,
+      openPopover,
       fileInput,
       action,
       headers,
+      popoverRef,
       showMaskId,
       handleImageClick,
       handleTabClick,

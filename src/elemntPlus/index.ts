@@ -85,3 +85,4 @@ export function setupElementPlus(app: App<Element>) {
 
 export type ElETree = InstanceType<typeof ElTree>
 export type ElEForm = InstanceType<typeof ElForm>
+export type ElEPopover = InstanceType<typeof ElPopover>

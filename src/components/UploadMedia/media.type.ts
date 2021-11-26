@@ -1,3 +1,4 @@
+import { ElEPopover } from "@/elemntPlus"
 
 export type FileType = {
     id: Number,
@@ -17,4 +18,9 @@ export type FileType = {
 export type uploadRes = {
     name: string,
     url: string
+}
+
+export interface UploadMediaType {
+    openPopover: () => void;
+    popoverRef: ElEPopover
 }

@@ -8,6 +8,7 @@
             :customOperate="true"
         >
             <template #status="scope">
+
                 <el-switch
                     v-model="scope.row.status"
                     :active-value="1"
