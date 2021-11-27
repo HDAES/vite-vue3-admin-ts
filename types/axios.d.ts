@@ -36,7 +36,13 @@ export interface ResponseList<T> {
     total: Number
 }
 
-export interface BasePagination{
+//分页请求
+export interface BasePagination {
     page:Number,
     size: Number
+}
+
+//删除请求
+export interface BaseDeleteIds {
+    ids: string
 }

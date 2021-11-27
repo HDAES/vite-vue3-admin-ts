@@ -19,6 +19,8 @@
           />
       </template>
     </BasicTable>
+
+    
     <el-dialog
       :title="dialog.type == 'edit' ? '编辑' : '添加'"
       v-model="dialog.visible"
@@ -64,7 +66,7 @@ import { defineComponent, reactive,ref } from "vue";
 import { BasicTable, TableActionType, TableColumns,UpDateType} from "@/components/BasicTable";
 import { getBlogSort, postBlogSort,putBlogSort,deleteBlogSort } from "@/api/blog/sort";
 import { UploadMedia, UploadMediaType } from "@/components/UploadMedia";
-import { SortType } from "@/api/blog/sort.type";
+import { SortType } from "@/api/blog/blog.type";
 import { ElEForm } from "@/elemntPlus";
 export default defineComponent({
   components: { BasicTable, UploadMedia },
@@ -101,7 +103,6 @@ export default defineComponent({
 
     //弹窗确认按钮
     const handleDetermine = () =>{
-      console.log(UploadMediaRef.value)
       sortRef.value?.validate( valid =>{
         if(valid){
           if(dialog.type == "add"){
@@ -123,7 +124,7 @@ export default defineComponent({
 
     const switchChange = (row: SortType) =>{
       if(row.id!=null){
-        putBlogSort({id: row.id, status: row.status})
+        putBlogSort(row)
       }
     }
     return {
