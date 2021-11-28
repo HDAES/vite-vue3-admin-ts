@@ -9,7 +9,7 @@
             ref="tableRef"
             :tableConfig="tableConfig"
             :columns="columns"
-            :getData="getBlogTags"
+            :get-data="getBlogTags"
             :del-data="deleteBlogTag"
             :edit-add="handleEditAdd"
         />

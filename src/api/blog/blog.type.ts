@@ -20,3 +20,12 @@ export interface TagType {
     deleted?: Number, //删除状态
 
 }
+
+export interface SayingType {
+    id?: string,
+    content: string,
+    author: string,
+    deleted?: Number,
+    createTime?: string,
+    updateTime?: string
+}
