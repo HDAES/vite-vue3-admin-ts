@@ -22,10 +22,36 @@ export interface TagType {
 }
 
 export interface SayingType {
-    id?: string,
-    content: string,
-    author: string,
-    deleted?: Number,
-    createTime?: string,
+    id?: string;
+    content: string;
+    author: string;
+    deleted?: Number;
+    createTime?: string;
+    updateTime?: string;
+}
+
+export interface DetailsType {
+    id?: string;
+    sid?: string;   //分类ID
+    name?: string;  //分类名字
+    tid?: string;
+    tname?: string;
+    title: string;
+    des: string;
+    fullImage?: string;
+    source: Number;
+    type: Number;
+    orderIn: Number;
+    createTime?: string;
+    updateTime?: string
+}
+
+export interface ContentType {
+    id?: string;
+    likeCount: Number;
+    path?: string | null;
+    readCount: Number;
+    content: string;
+    createTime?: string;
     updateTime?: string
 }

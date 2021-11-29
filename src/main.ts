@@ -4,7 +4,11 @@ import 'virtual:svg-icons-register';
 import 'virtual:windi-base.css'
 import 'virtual:windi-components.css'
 import 'virtual:windi-utilities.css'
-
+import VMdEditor from '@kangc/v-md-editor';
+import '@kangc/v-md-editor/lib/style/base-editor.css';
+import githubTheme from '@kangc/v-md-editor/lib/theme/github.js';
+import hljs from 'highlight.js';
+import '@kangc/v-md-editor/lib/theme/style/github.css';
 import '@/elemntPlus/element-plus-theme/index.css'
 import '@/assets/styles/index.scss'
 
@@ -16,6 +20,9 @@ import { setupHasRole } from '@/utils/hasPermission'
 import './permission'
 import App from './App.vue'
 
+VMdEditor.use(githubTheme, {
+    Hljs: hljs,
+  });
 
 async function bootstrap() {
     const app = createApp(App)
@@ -29,6 +36,8 @@ async function bootstrap() {
     
     setupHasRole(app)
 
+    app.use(VMdEditor)
+    
     app.component('SvgIcon',SvgIcon).mount('#app');
 }
 bootstrap()

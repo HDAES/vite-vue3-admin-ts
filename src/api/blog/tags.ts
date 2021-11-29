@@ -1,4 +1,5 @@
 import request from '@/utils/http'
+import { AxiosResponse } from 'axios'
 import { BaseDeleteIds, BasePagination, ResponseList } from 'types/axios'
 import { TagType } from './blog.type'
 
@@ -11,6 +12,15 @@ export function getBlogTags(params: BasePagination) {
         params
     })
 }
+
+export function getBlogTagsByID(params) {
+    return request<AxiosResponse<TagType[]>>({
+        url: '/admin/blog//tag/bid',
+        method: 'get',
+        params
+    })
+}
+
 
 //添加分类标签
 export function postBlogTags(data: TagType) {

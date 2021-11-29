@@ -38,6 +38,11 @@ export type ExportConfig = {
 
 export interface TableActionType {
     handleRefresh: () => void;
-
 }
 
+
+export interface paginationType {
+    total?: Number;
+    currentPage?: Number;
+    pageSize?: Number;
+}

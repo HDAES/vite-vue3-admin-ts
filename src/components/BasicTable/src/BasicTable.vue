@@ -152,7 +152,7 @@ import draggable from 'vuedraggable';
 import ExportJsonExcel from '@/utils/exportExecl';
 import { useRoute } from 'vue-router'
 
-import type { TableConfig, TableColumns, DeleletType,ExportConfig } from '../table.type'
+import type { TableConfig, TableColumns, DeleletType,ExportConfig, paginationType } from '../table.type'
 export default {
   components: { ColumnSetting, draggable },
   props:{
@@ -170,6 +170,9 @@ export default {
     },
     tableConfig: {
       type: Object as PropType<TableConfig>
+    },
+    pagination:{
+      type : Object as PropType<paginationType>
     },
     //编辑或者新增 事件
     editAdd: {
@@ -231,7 +234,8 @@ export default {
     const pagination = reactive({
       total: 0,
       currentPage: 1,
-      pageSize: 10
+      pageSize: 10,
+      ...props.pagination
     })
     watchEffect(() =>{
       loading.value = true
