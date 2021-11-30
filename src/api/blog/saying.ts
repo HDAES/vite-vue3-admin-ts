@@ -1,5 +1,4 @@
 import request from '@/utils/http'
-import { AxiosResponse } from 'axios'
 import { BaseDeleteIds, BasePagination, ResponseList } from 'types/axios'
 import { SayingType } from './blog.type'
 export * from './blog.type'

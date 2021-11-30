@@ -1,7 +1,6 @@
 import request from '@/utils/http'
-import { AxiosResponse } from 'axios'
 import { BaseDeleteIds, BasePagination, ResponseList } from 'types/axios'
-import { DetailsType, SayingType } from './blog.type'
+import { DetailsType } from './blog.type'
 export * from './blog.type'
 
 

@@ -114,13 +114,22 @@
       width="900px"
       top="20px"
       >
-
-        <v-md-editor v-model="contentDialog.text" height="400px"></v-md-editor>
-
+        
+          <el-upload
+            ref="upload"
+            :action="action"
+            :headers="headers"
+            :on-success="successUpload"
+          >
+            <el-button size="small" type="primary">选取文件</el-button>
+          </el-upload>
+        
+        <md-editor v-model="contentForm.content" height="400px" preview-theme="github"></md-editor>
+        
         <template #footer>
         <span class="dialog-footer">
           <el-button>取 消</el-button>
-          <el-button type="primary" >保存</el-button>
+          <el-button type="primary" @click="handleSave">保存</el-button>
         </span>
       </template>
     </el-dialog>
@@ -133,21 +142,24 @@
 import { defineComponent, reactive, ref } from "vue";
 import {BasicTable,TableActionType,TableColumns,UpDateType,} from "@/components/BasicTable";
 import { getBlogDetails,postBlogDetails, DetailsType,putBlogDetails,deleteBlogDetails, SortType, TagType } from '@/api/blog/details'
-import { getBlogContent} from '@/api/blog/content'
+import { ContentType, getBlogContent, postBlogContent, putBlogContent} from '@/api/blog/content'
 import { getBlogSortAll } from '@/api/blog/sort'
 import { getBlogTagsByID } from '@/api/blog/tags'
 import { ElEForm } from "@/elemntPlus";
 import { UploadMedia } from '@/components/UploadMedia'
+import { setUploadSign } from "@/utils/http/sign";
+
+import MdEditor from 'md-editor-v3';
+import 'md-editor-v3/lib/style.css';
+
 export default defineComponent({
-  components: { BasicTable, UploadMedia },
+  components: { BasicTable, UploadMedia, MdEditor },
   setup() {
     const dialog = reactive({ visible: false, type: "" });
-    const contentDialog = ref({
-      visible: false,
-      text: ""
-    })
+    const contentDialog = reactive({visible: false, type: "" })
     const formRef = ref<ElEForm | null>(null);
     const tableRef = ref<Nullable<TableActionType>>(null);
+   
     const sortList = ref<SortType[]>([])
     const tagsList = ref<TagType[]>([])
     const formData = ref<DetailsType>({
@@ -160,6 +172,13 @@ export default defineComponent({
         type: 0,
         orderIn: 0,
     });
+    const contentForm = ref<ContentType>({
+      id: "",
+      content: "",
+      likeCount: 0,
+      readCount: 0,
+      path: ""
+    })
 
     const handleEditAdd = async(type: UpDateType, row: DetailsType) => {
       dialog.visible = true;
@@ -171,11 +190,9 @@ export default defineComponent({
           tagsList.value = res.data 
         })
       }
-
       //获取分类
       const { data } = await getBlogSortAll()
       sortList.value = data
-
     };
     
    
@@ -204,14 +221,37 @@ export default defineComponent({
       });
     };
 
+
     const handleContent = (row: DetailsType) =>{
-      contentDialog.value.visible = true
+      contentDialog.visible = true
+      contentForm.value.id = row.id
       getBlogContent({id: row.id}).then(res =>{
-        contentDialog.value.text = res.data.content
+        if(res.data){
+          contentDialog.type = "edit"
+          contentForm.value.content = res.data.content
+          contentForm.value.path =  res.data.content
+        }else{
+          contentDialog.type = "add"
+        }
       })
-      
     }
 
+    const successUpload = (e) =>{
+      console.log(e)
+      if(e.code == 200){
+        contentForm.value.path = e.data.url
+      }
+    }
+    // 文章保存
+    const handleSave = () =>{
+      Promise.all(
+        contentDialog.type == "add"
+          ? [postBlogContent(contentForm.value)]
+          : [putBlogContent(contentForm.value)]
+      ).then((res) => {
+        contentDialog.visible = false;
+      });
+    }
     const closed = () =>{
         formData.value = {
             title: "",
@@ -223,20 +263,25 @@ export default defineComponent({
         }
     }
     return {
+      contentForm,
       contentDialog,
       dialog,
-      closed,
       sortList,
       tagsList,
       formData,
       formRef,
       tableRef,
+      closed,
+      handleSave,
       sortChange,
       handleContent,
+      successUpload,
       deleteBlogDetails,
       handleEditAdd,
       handleDetermine,
       getBlogDetails,
+      headers :setUploadSign(),
+      action: import.meta.env.VITE_GLOB_API_URL + '/file/oss',
       rules: {
         content: [{ required: true, message: "请输入内容", trigger: "blur" }],
         author: [{ required: true, message: "请输入作者", trigger: "blur" }],
