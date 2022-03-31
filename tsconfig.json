@@ -13,7 +13,7 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "lib": ["esnext", "dom"],
-    "types": ["vite/client"],
+    "types": ["element-plus/global"],
     "paths": {
       "@/*": ["src/*"]
     }
@@ -30,7 +30,6 @@
     "vite.config.ts"
   ],
   "exclude": [
-      "node_modules",
-      "src/**/picture_cut/*.vue"
-    ]
+    "node_modules"
+  ]
 }
